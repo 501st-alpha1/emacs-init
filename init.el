@@ -37,3 +37,16 @@
 
 (global-set-key (kbd "C-x K") 'my-kill-buffer)
 (global-set-key (kbd "C-x O") 'my-prev-window)
+
+;;----------------------------------------------------------------------------;;
+;;                             Global Config                                  ;;
+;;----------------------------------------------------------------------------;;
+;; Various global settings, including mode line config.
+
+(global-visual-line-mode t)
+(setq display-time-24hr-format t)
+(column-number-mode 1)
+(display-time-mode 1)
+(display-battery-mode 1)
+(setq battery-mode-line-format " [%b%p%%] ")
+
