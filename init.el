@@ -17,7 +17,7 @@
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
-;; (Mostly designed to be called directly (or have a key-combo bound to).
+;; Mostly designed to be called directly (or have a key-combo bound to.
 ;; All begin with prefix "my".
 
 (defun my-prev-window()
@@ -28,3 +28,12 @@
   (interactive)
   (kill-buffer)
   (other-window 1))
+
+;;----------------------------------------------------------------------------;;
+;;                          Keyboard Shortcuts                                ;;
+;;----------------------------------------------------------------------------;;
+;; Tried to keep from conflicting with defaults, but no guarantees.
+;; Did not use standard C-c prefix.
+
+(global-set-key (kbd "C-x K") 'my-kill-buffer)
+(global-set-key (kbd "C-x O") 'my-prev-window)
