@@ -15,6 +15,26 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;----------------------------------------------------------------------------;;
+;;                           Load Libraries                                   ;;
+;;----------------------------------------------------------------------------;;
+;; Load all needed libraries first
+;; Using require so it is obvious when something breaks
+
+(require 'editorconfig)
+(require 'erc-join)
+(require 'erc-log)
+(require 'erc-match)
+(require 'facebook)
+(require 'markdown-mode)
+(require 'notify)
+(require 'org-feed)
+(require 'php-mode)
+(require 'python)
+(require 'tls)
+(require 'twittering-mode)
+(require 'web-mode)
+
+;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
 ;; Mostly designed to be called directly (or have a key-combo bound to.
