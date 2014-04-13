@@ -20,19 +20,12 @@
 ;; Load all needed libraries first
 ;; Using require so it is obvious when something breaks
 
-(require 'editorconfig)
 (require 'erc-join)
 (require 'erc-log)
 (require 'erc-match)
-(require 'facebook)
-(require 'markdown-mode)
-(require 'notify)
 (require 'org-feed)
-(require 'php-mode)
 (require 'python)
 (require 'tls)
-(require 'twittering-mode)
-(require 'web-mode)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
