@@ -71,3 +71,7 @@
       kept-old-versions 2
       version-control t)
 
+;Indentation stuff
+(setq-default indent-tabs-mode nil)
+(setq c-basic-offset 2)
+(setq c-basic-indent 2)
