@@ -63,7 +63,7 @@
 (display-battery-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
 
-;Auto Backup Files
+;; Auto Backup Files
 (setq backup-directory-alist '(("." . "~/.saves"))
       backup-by-copying t
       delete-old-versions t
@@ -71,7 +71,23 @@
       kept-old-versions 2
       version-control t)
 
-;Indentation stuff
+;; Indentation stuff
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
+
+;;----------------------------------------------------------------------------;;
+;;                              Mode Hooks                                    ;;
+;;----------------------------------------------------------------------------;;
+;; Various mode hooks
+
+;; Syntax highlighting for diffs
+(add-hook 'diff-mode-hook
+          (lambda()
+            (set-face-foreground 'diff-removed "red")
+            (set-face-foreground 'diff-added "green")))
+
+;; More indentation
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (c-set-offset 'case-label '2)))
