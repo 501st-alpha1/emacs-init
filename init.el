@@ -79,6 +79,7 @@
 
 (global-set-key (kbd "C-x K") 'my-kill-buffer)
 (global-set-key (kbd "C-x O") 'my-prev-window)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
