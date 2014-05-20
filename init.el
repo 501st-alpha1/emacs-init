@@ -36,12 +36,25 @@
 ;; Load all needed libraries first
 ;; Using require so it is obvious when something breaks
 
+(require 'chess)
+(require 'editorconfig)
+(require 'emms-setup)
+(require 'erc-chess)
 (require 'erc-join)
 (require 'erc-log)
 (require 'erc-match)
+(require 'facebook)
+(require 'fic-mode)
+(require 'magit)
+(require 'markdown-mode)
+(require 'notify)
 (require 'org-feed)
+(require 'php-mode)
 (require 'python)
+(require 'simple-rtm)
 (require 'tls)
+(require 'twittering-mode)
+(require 'web-mode)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
