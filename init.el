@@ -15,6 +15,22 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;----------------------------------------------------------------------------;;
+;;                          Custom Load Path                                  ;;
+;;----------------------------------------------------------------------------;;
+;; Load path for various external libraries, managed with git.
+
+;TODO: throw error if path not defined
+
+(add-to-list 'load-path external-library-location)
+(dolist (folder (directory-files external-library-location))
+  (let ((name (concat external-library-location "/" folder)))
+    (when (and (file-directory-p name) 
+               (not (equal folder ".."))
+               (not (equal folder ".")))
+      (add-to-list 'load-path name))))
+
+
+;;----------------------------------------------------------------------------;;
 ;;                           Load Libraries                                   ;;
 ;;----------------------------------------------------------------------------;;
 ;; Load all needed libraries first
