@@ -22,13 +22,13 @@
 ;TODO: throw error if path not defined
 
 (add-to-list 'load-path external-library-location)
-(dolist (folder (directory-files external-library-location))
-  (let ((name (concat external-library-location "/" folder)))
-    (when (and (file-directory-p name) 
-               (not (equal folder ".."))
-               (not (equal folder ".")))
-      (add-to-list 'load-path name))))
 
+(let* ((my-lisp-dir external-library-location)
+       (default-directory my-lisp-dir)
+       (orig-load-path load-path))
+  (setq load-path (cons my-lisp-dir nil))
+  (normal-top-level-add-subdirs-to-load-path)
+  (nconc load-path orig-load-path))
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Load Libraries                                   ;;
