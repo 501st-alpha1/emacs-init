@@ -45,6 +45,7 @@
 (require 'erc-match)
 (require 'facebook)
 (require 'fic-mode)
+(require 'magit-gitflow)
 (require 'magit)
 (require 'markdown-mode)
 (require 'notify)
@@ -121,3 +122,6 @@
 (add-hook 'c-mode-common-hook
           (lambda()
             (c-set-offset 'case-label '2)))
+
+;; Git
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
