@@ -72,6 +72,12 @@
   (kill-buffer)
   (other-window 1))
 
+(defun my-insert-space-or-newline-and-indent()
+  (interactive)
+  (if (>= (current-column) fill-column)
+      (newline-and-indent)
+    (insert-char ? )))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
@@ -81,6 +87,7 @@
 (global-set-key (kbd "C-x K") 'my-kill-buffer)
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "SPC") 'my-insert-space-or-newline-and-indent)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
@@ -102,10 +109,11 @@
       kept-old-versions 2
       version-control t)
 
-;; Indentation stuff
+;; Code Formatting
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
+(setq-default fill-column 70)
 
 ;;----------------------------------------------------------------------------;;
 ;;                              Mode Hooks                                    ;;
