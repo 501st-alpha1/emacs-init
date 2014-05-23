@@ -78,6 +78,16 @@
       (newline-and-indent)
     (insert-char ? )))
 
+;; Open the window all over that screen.
+(defun my-all-over-the-screen (&number)
+  (interactive)
+  (delete-other-windows)
+  (let ((splits (or &number 3)))
+    (dotimes (i (- splits 1))
+      (split-window-horizontally)))
+  (balance-windows)
+  (follow-mode t))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
