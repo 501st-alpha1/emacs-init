@@ -88,6 +88,13 @@
   (balance-windows)
   (follow-mode t))
 
+(defun kill-dired-buffers ()
+  (interactive)
+  (mapc (lambda (buffer)
+          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
+            (kill-buffer buffer)))
+        (buffer-list)))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
