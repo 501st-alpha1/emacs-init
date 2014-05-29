@@ -39,16 +39,16 @@
 (require 'chess)
 (require 'editorconfig)
 (require 'emms-setup)
-(require 'erc-chess)
+(require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
 (require 'erc-log)
 (require 'erc-match)
 (require 'facebook)
-(require 'fic-mode)
+(require 'fic-mode) ;; TODO find git repo
 (require 'magit-gitflow)
 (require 'magit)
 (require 'markdown-mode)
-(require 'notify)
+(require 'notify) ;; TODO find git repo
 (require 'org-feed)
 (require 'php-mode)
 (require 'python)
@@ -88,7 +88,7 @@
   (balance-windows)
   (follow-mode t))
 
-(defun kill-dired-buffers ()
+(defun my-kill-dired-buffers ()
   (interactive)
   (mapc (lambda (buffer)
           (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
@@ -104,7 +104,7 @@
 (global-set-key (kbd "C-x K") 'my-kill-buffer)
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "SPC") 'my-insert-space-or-newline-and-indent)
+;(global-set-key (kbd "SPC") 'my-insert-space-or-newline-and-indent)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
@@ -131,6 +131,9 @@
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
 (setq-default fill-column 70)
+
+;; Navigation
+(ido-mode)
 
 ;;----------------------------------------------------------------------------;;
 ;;                              Mode Hooks                                    ;;
