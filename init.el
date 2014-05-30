@@ -153,3 +153,14 @@
 
 ;; Git
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+;; Custom *scratch*
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (interactive)
+            (kill-buffer "*scratch*")
+            (find-file (concat external-library-location "/.scratch"))
+            (rename-buffer "*scratch*")
+            (lisp-interaction-mode)
+            (bury-buffer "*scratch*")
+            (cd "~")))
