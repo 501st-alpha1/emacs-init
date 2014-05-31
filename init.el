@@ -50,7 +50,7 @@
 (require 'markdown-mode)
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
-(require 'php-mode)
+;(require 'php-mode)
 (require 'python)
 (require 'simple-rtm)
 (require 'tls)
@@ -134,6 +134,13 @@
 
 ;; Navigation
 (ido-mode)
+
+;;----------------------------------------------------------------------------;;
+;;                             Auto-Mode-Alist                                ;;
+;;----------------------------------------------------------------------------;;
+
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 
 ;;----------------------------------------------------------------------------;;
 ;;                              Mode Hooks                                    ;;
