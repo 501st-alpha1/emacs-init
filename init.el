@@ -36,6 +36,7 @@
 ;; Load all needed libraries first
 ;; Using require so it is obvious when something breaks
 
+(require 'auto-complete-config)
 (require 'chess)
 (require 'editorconfig)
 (require 'emms-setup)
@@ -125,6 +126,11 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
+
+;; Auto-complete
+(add-to-list 'ac-dictionary-directories
+             (concat external-library-location "/auto-complete/dict"))
+(ac-config-default)
 
 ;; Code Formatting
 (setq-default indent-tabs-mode nil)
