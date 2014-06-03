@@ -152,6 +152,10 @@
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "Blue")
 
+;; Twitter
+(setq twittering-use-master-password t
+      twittering-icon-mode t)
+
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
 ;;----------------------------------------------------------------------------;;
