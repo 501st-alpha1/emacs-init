@@ -37,6 +37,7 @@
 ;; Using require so it is obvious when something breaks
 
 (require 'auto-complete-config)
+(require 'battery)
 (require 'chess)
 (require 'editorconfig)
 (require 'emms-setup)
@@ -116,8 +117,14 @@
 (setq display-time-24hr-format t)
 (column-number-mode 1)
 (display-time-mode 1)
-(display-battery-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
+
+;; Battery?
+(when (and battery-status-function
+           (not (string-match-p "N/A"
+                                (battery-format "%B"
+                                                (funcall battery-status-function)))))
+  (display-battery-mode 1))
 
 ;; Auto Backup Files
 (setq backup-directory-alist '(("." . "~/.saves"))
