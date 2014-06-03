@@ -160,6 +160,10 @@
 ;;                             Auto-Mode-Alist                                ;;
 ;;----------------------------------------------------------------------------;;
 
+;; Markdown
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Web
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
