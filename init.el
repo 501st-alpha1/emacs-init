@@ -58,6 +58,7 @@
 (require 'tls)
 (require 'twittering-mode)
 (require 'web-mode)
+(require 'whitespace)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
@@ -113,6 +114,10 @@
 ;;----------------------------------------------------------------------------;;
 ;; Various global settings, including mode line config.
 
+(global-whitespace-mode t)
+(setq whitespace-style '(face tabs spaces trailing lines space-before-tab
+                              newline indentation empty space-after-tab
+                              tab-mark))
 (global-visual-line-mode t)
 (setq display-time-24hr-format t)
 (column-number-mode 1)
