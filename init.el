@@ -152,6 +152,7 @@
 
 ;; Navigation
 (ido-mode)
+(setq ido-separator "\n")
 
 ;; Web mode
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
