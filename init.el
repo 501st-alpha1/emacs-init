@@ -36,7 +36,7 @@
 ;; Load all needed libraries first
 ;; Using require so it is obvious when something breaks
 
-(require '2048)
+(load "2048.el") ;; Breaks with require, probably because of number-only name.
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
