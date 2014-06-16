@@ -194,7 +194,9 @@
 
 ;; Navigation
 (ido-mode)
-(setq ido-separator "\n")
+(setq ido-separator "\n"
+      ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
+                           "*Messages*" "Async Shell Command"))
 
 ;; Web mode
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
