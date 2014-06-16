@@ -48,6 +48,7 @@
 (require 'erc-match)
 (require 'facebook)
 (require 'fic-mode) ;; TODO find git repo
+(require 'inf-ruby)
 (require 'magit-gitflow)
 (require 'magit)
 (require 'markdown-mode)
@@ -55,6 +56,7 @@
 (require 'org-feed)
 ;(require 'php-mode)
 (require 'python)
+(require 'ruby-electric)
 (require 'simple-rtm)
 (require 'tls)
 (require 'twittering-mode)
@@ -191,6 +193,7 @@
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
 (setq-default fill-column 70)
+(setq ruby-indent-size 2)
 
 ;; Navigation
 (ido-mode)
@@ -257,6 +260,9 @@
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
             (cd "~")))
+
+;; Ruby
+(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
 ;; Web mode
 (add-hook 'web-mode-hook
