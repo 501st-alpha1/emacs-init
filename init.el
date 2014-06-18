@@ -119,7 +119,7 @@
 ;;----------------------------------------------------------------------------;;
 ;; Various global settings, including mode line config.
 
-(global-whitespace-mode t)
+;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs spaces trailing lines space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
@@ -202,6 +202,7 @@
                            "*Messages*" "Async Shell Command"))
 
 ;; Web mode
+(set-face-attribute 'web-mode-whitespace-face nil :background "red")
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "Blue")
 (setq web-mode-extra-auto-pairs
@@ -277,5 +278,8 @@
           (lambda ()
             (setq web-mode-markup-indent-offset 2
                   web-mode-css-indent-offset 2
-                  web-mode-code-indent-offset 2)
+                  web-mode-code-indent-offset 2
+                  web-mode-enable-whitespaces t
+                  web-mode-whitespaces-regexp "^[\t]+\\|[\t ]+$"
+                  web-mode-display-table nil)
             (local-set-key (kbd "RET") 'newline-and-indent)))
