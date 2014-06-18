@@ -204,6 +204,14 @@
 ;; Web mode
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "Blue")
+(setq web-mode-extra-auto-pairs
+      '(("erb" . (("open" "close")))
+        ("php" . (("open" "close")
+                  ("open" "close")))))
+(setq web-mode-engines-alist
+      '(("php"   . "\\.phtml\\'")
+        ("blade" . "\\.blade\\.")
+        ("erb"   . "\\.erb\\'")))
 
 ;; Twitter
 (setq twittering-use-master-password t
