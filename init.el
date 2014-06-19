@@ -40,6 +40,7 @@
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
+(require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
@@ -94,6 +95,7 @@
   (balance-windows)
   (follow-mode t))
 
+;; TODO: kill only sub-dirs of given dir?
 (defun my-kill-dired-buffers ()
   (interactive)
   (mapc (lambda (buffer)
