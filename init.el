@@ -108,7 +108,10 @@
   (let* ((files (cons nil (directory-files directory full match nosort)))
          (parent files)
          (current (cdr files))
-         (exclude (list "." ".."))
+         (exclude (if (full) ;; For absolute paths
+                    (list (concat directory "/.")
+                          (concat directory "/..")))
+                  (list "." "..")) ;; For relative paths
          (file nil))
     (while (and current exclude)
       (setq file (car current))
