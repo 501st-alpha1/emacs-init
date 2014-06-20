@@ -103,6 +103,22 @@
             (kill-buffer buffer)))
         (buffer-list)))
 
+(defun my-directory-files (directory &optional full match nosort)
+  "Like `directory-files', but excluding \".\" and \"..\"."
+  (let* ((files (cons nil (directory-files directory full match nosort)))
+         (parent files)
+         (current (cdr files))
+         (exclude (list "." ".."))
+         (file nil))
+    (while (and current exclude)
+      (setq file (car current))
+      (if (not (member file exclude))
+          (setq parent current)
+        (setcdr parent (cdr current))
+        (setq exclude (delete file exclude)))
+      (setq current (cdr current)))
+    (cdr files)))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
