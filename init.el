@@ -40,6 +40,7 @@
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
+(require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
@@ -94,12 +95,32 @@
   (balance-windows)
   (follow-mode t))
 
+;; TODO: kill only sub-dirs of given dir?
 (defun my-kill-dired-buffers ()
   (interactive)
   (mapc (lambda (buffer)
           (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
             (kill-buffer buffer)))
         (buffer-list)))
+
+(defun my-directory-files (directory &optional full match nosort)
+  "Like `directory-files', but excluding \".\" and \"..\"."
+  (let* ((files (cons nil (directory-files directory full match nosort)))
+         (parent files)
+         (current (cdr files))
+         (exclude (if (full) ;; For absolute paths
+                    (list (concat directory "/.")
+                          (concat directory "/..")))
+                  (list "." "..")) ;; For relative paths
+         (file nil))
+    (while (and current exclude)
+      (setq file (car current))
+      (if (not (member file exclude))
+          (setq parent current)
+        (setcdr parent (cdr current))
+        (setq exclude (delete file exclude)))
+      (setq current (cdr current)))
+    (cdr files)))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
@@ -119,7 +140,7 @@
 ;;----------------------------------------------------------------------------;;
 ;; Various global settings, including mode line config.
 
-(global-whitespace-mode t)
+;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
@@ -202,8 +223,17 @@
                            "*Messages*" "Async Shell Command"))
 
 ;; Web mode
+(set-face-attribute 'web-mode-whitespace-face nil :background "red")
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
 (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "Blue")
+(setq web-mode-extra-auto-pairs
+      '(("erb" . (("open" "close")))
+        ("php" . (("open" "close")
+                  ("open" "close")))))
+(setq web-mode-engines-alist
+      '(("php"   . "\\.phtml\\'")
+        ("blade" . "\\.blade\\.")
+        ("erb"   . "\\.erb\\'")))
 
 ;; Twitter
 (setq twittering-use-master-password t
@@ -269,5 +299,9 @@
           (lambda ()
             (setq web-mode-markup-indent-offset 2
                   web-mode-css-indent-offset 2
-                  web-mode-code-indent-offset 2)
+                  web-mode-code-indent-offset 2
+                  web-mode-enable-auto-pairing t
+                  web-mode-enable-whitespaces t
+                  web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
+                  web-mode-display-table nil)
             (local-set-key (kbd "RET") 'newline-and-indent)))
