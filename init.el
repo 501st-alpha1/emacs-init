@@ -120,7 +120,7 @@
 ;; Various global settings, including mode line config.
 
 (global-whitespace-mode t)
-(setq whitespace-style '(face tabs spaces trailing lines space-before-tab
+(setq whitespace-style '(face tabs trailing lines space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
 (global-visual-line-mode t)
