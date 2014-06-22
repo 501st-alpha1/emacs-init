@@ -53,6 +53,7 @@
 (require 'magit-gitflow)
 (require 'magit)
 (require 'markdown-mode)
+(require 'mew)
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
 ;(require 'php-mode)
