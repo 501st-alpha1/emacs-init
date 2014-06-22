@@ -133,6 +133,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
+(global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
 ;(global-set-key (kbd "SPC") 'my-insert-space-or-newline-and-indent)
 
 ;;----------------------------------------------------------------------------;;
@@ -215,6 +216,7 @@
 (setq c-basic-indent 2)
 (setq-default fill-column 70)
 (setq ruby-indent-size 2)
+(setq python-indent-offset 2)
 
 ;; Navigation
 (ido-mode)
@@ -242,6 +244,9 @@
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
 ;;----------------------------------------------------------------------------;;
+
+;; EditorConfig
+(add-to-list 'auto-mode-alist '("\\.editorconfig$" . conf-unix-mode))
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -293,6 +298,12 @@
 
 ;; Ruby
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
+
+;; Twitter
+(add-hook 'twittering-edit-mode-hook
+          (lambda ()
+            (ispell-minor-mode)
+            (flyspell-mode)))
 
 ;; Web mode
 (add-hook 'web-mode-hook
