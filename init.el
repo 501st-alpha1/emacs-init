@@ -141,6 +141,9 @@
       (setq current (cdr current)))
     (cdr files)))
 
+(defun my-group(string)
+  (concat "[" string "]"))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
@@ -259,6 +262,21 @@
 ;; Twitter
 (setq twittering-use-master-password t
       twittering-icon-mode t)
+
+;; Eshell Prompt
+(setq eshell-prompt-function
+      (lambda ()
+        (let ((nl "\n"))
+          (concat
+           (my-group (make-string 78 ?-))
+           nl (my-group (eshell/pwd)) nl
+           ;; Modifications usually go here
+           (my-group (format-time-string "%Y-%m-%d" (current-time)))
+           (my-group (format-time-string "%H:%M:%S" (current-time)))
+           (my-group (concat user-login-name "@" system-name))
+           (my-group (concat "Maybe codes" (eshell/echo "Hi")))
+           ;; And end here
+           nl (if (= (user-uid) 0) "# " "$ ")))))
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
