@@ -274,7 +274,7 @@
            (my-group (format-time-string "%Y-%m-%d" (current-time)))
            (my-group (format-time-string "%H:%M:%S" (current-time)))
            (my-group (concat user-login-name "@" system-name))
-           (my-group (concat "Maybe codes" (eshell/echo "Hi")))
+           (my-group (concat "RET" ":" (format "%s" eshell-last-command-status)))
            ;; And end here
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
