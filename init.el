@@ -15,12 +15,14 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;----------------------------------------------------------------------------;;
+;;                                Usage                                       ;;
+;;----------------------------------------------------------------------------;;
 ;; This is my personal init file for Emacs. If your preferences are similar   ;;
 ;; mine, it should be usable with very little modification. To use, place the ;;
 ;; following code in your actual .init, modifying to fit your needs.          ;;
 ;;                                                                            ;;
 ;; This init file assumes that you use git to manage Emacs packages. To do so ;;
-;; choose a folder as base, and do 'git clone <repo' for each package.        ;;
+;; choose a folder as base, and do 'git clone <repo>' for each package.       ;;
 ;; Usually, the same is done with this repo.                                  ;;
 ;;                                                                            ;;
 ;; (setq external-library-location "/path/to/git/folders")                    ;;
@@ -29,6 +31,9 @@
 ;;                                                                            ;;
 ;; Or, more simply:                                                           ;;
 ;; (load-file (concat external-library-location "/emacs/init.el"))            ;;
+;;----------------------------------------------------------------------------;;
+;; Windows specific:                                                          ;;
+;; (setq notify-method 'notify-via-growl) Must be placed *before* above code. ;;
 ;;----------------------------------------------------------------------------;;
 
 
