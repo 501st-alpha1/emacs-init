@@ -90,6 +90,13 @@
 (require 'whitespace)
 
 ;;----------------------------------------------------------------------------;;
+;;                           Custom Variables                                 ;;
+;;----------------------------------------------------------------------------;;
+
+(defvar my-eshell-command-count 0 "Variable to keep track of command count")
+(make-variable-buffer-local 'my-eshell-command-count)
+
+;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
 ;; Mostly designed to be called directly (or have a key-combo bound to.
@@ -149,6 +156,11 @@
 
 (defun my-group(string)
   (concat "[" string "]"))
+
+ 
+(defun my-increment-eshell-command-count ()
+  "Increments the eshell command count var."
+  (incf my-eshell-command-count))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
@@ -280,7 +292,9 @@
            (my-group (format-time-string "%Y-%m-%d" (current-time)))
            (my-group (format-time-string "%H:%M:%S" (current-time)))
            (my-group (concat user-login-name "@" system-name))
-           (my-group (concat "RET" ":" (format "%s" eshell-last-command-status)))
+           (my-group (concat (int-to-string my-eshell-command-count)
+                             ":"
+                             (format "%s" eshell-last-command-status)))
            ;; And end here
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
@@ -319,6 +333,9 @@
           (lambda()
             (set-face-foreground 'diff-removed "red")
             (set-face-foreground 'diff-added "green")))
+
+;; Eshell
+(add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
 
 ;; More indentation
 (add-hook 'c-mode-common-hook
