@@ -37,7 +37,8 @@
 ;;----------------------------------------------------------------------------;;
 ;; Load path for various external libraries, managed with git.
 
-;TODO: throw error if path not defined
+(unless (boundp 'external-library-location)
+  (error "External library location not defined!"))
 
 (add-to-list 'load-path external-library-location)
 
