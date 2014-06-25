@@ -258,6 +258,9 @@
 (setq ruby-indent-size 2)
 (setq python-indent-offset 2)
 
+;; IRC
+(setq erc-kill-server-buffer-on-quit t)
+
 ;; Navigation
 (ido-mode)
 (setq ido-separator "\n"
