@@ -333,22 +333,16 @@
 ;; 2048
 (add-hook '2048-mode-hook 'my-2048-hook)
 
-;; Syntax highlighting for diffs
-(add-hook 'diff-mode-hook
-          (lambda()
-            (set-face-foreground 'diff-removed "red")
-            (set-face-foreground 'diff-added "green")))
-
-;; Eshell
-(add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
-
 ;; More indentation
 (add-hook 'c-mode-common-hook
           (lambda()
             (c-set-offset 'case-label '2)))
 
-;; Git
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+;; Syntax highlighting for diffs
+(add-hook 'diff-mode-hook
+          (lambda()
+            (set-face-foreground 'diff-removed "red")
+            (set-face-foreground 'diff-added "green")))
 
 ;; Custom *scratch*
 (add-hook 'emacs-startup-hook
@@ -360,6 +354,12 @@
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
             (cd "~")))
+
+;; Eshell
+(add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
+
+;; Git
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;; Ruby
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
