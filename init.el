@@ -73,6 +73,7 @@
 (require 'erc-match)
 (require 'facebook)
 (require 'fic-mode) ;; TODO find git repo
+(require 'hideshow)
 (require 'inf-ruby)
 (require 'magit-gitflow)
 (require 'magit)
@@ -173,6 +174,10 @@
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
+(global-set-key (kbd "C-c s") 'hs-show-block)
+(global-set-key (kbd "C-c h") 'hs-hide-block)
+(global-set-key (kbd "C-c S") 'hs-show-all)
+(global-set-key (kbd "C-c H") 'hs-hide-all)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
@@ -252,6 +257,8 @@
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
+(setq lisp-basic-indent 2)
+(setq lisp-basic-offset 2)
 (setq-default fill-column 70)
 (setq ruby-indent-size 2)
 (setq python-indent-offset 2)
@@ -334,13 +341,17 @@
 ;; More indentation
 (add-hook 'c-mode-common-hook
           (lambda()
-            (c-set-offset 'case-label '2)))
+            (c-set-offset 'case-label '2)
+            ('hs-minor-mode)))
 
 ;; Syntax highlighting for diffs
 (add-hook 'diff-mode-hook
           (lambda()
             (set-face-foreground 'diff-removed "red")
             (set-face-foreground 'diff-added "green")))
+
+;; Lisp mode
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 ;; Custom *scratch*
 (add-hook 'emacs-startup-hook
