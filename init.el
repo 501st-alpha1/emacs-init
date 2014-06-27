@@ -80,7 +80,6 @@
 (require 'mew)
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
-;(require 'php-mode)
 (require 'python)
 (require 'ruby-electric)
 (require 'simple-rtm)
@@ -174,7 +173,6 @@
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
-;(global-set-key (kbd "SPC") 'my-insert-space-or-newline-and-indent)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
