@@ -342,7 +342,7 @@
 (add-hook 'c-mode-common-hook
           (lambda()
             (c-set-offset 'case-label '2)
-            ('hs-minor-mode)))
+            (hs-minor-mode)))
 
 ;; Syntax highlighting for diffs
 (add-hook 'diff-mode-hook
@@ -351,7 +351,7 @@
             (set-face-foreground 'diff-added "green")))
 
 ;; Lisp mode
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook hs-minor-mode)
 
 ;; Custom *scratch*
 (add-hook 'emacs-startup-hook
