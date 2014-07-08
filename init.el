@@ -351,7 +351,7 @@
             (set-face-foreground 'diff-added "green")))
 
 ;; Lisp mode
-(add-hook 'emacs-lisp-mode-hook hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
 ;; Custom *scratch*
 (add-hook 'emacs-startup-hook
