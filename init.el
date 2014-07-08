@@ -25,15 +25,18 @@
 ;; choose a folder as base, and do 'git clone <repo>' for each package.       ;;
 ;; Usually, the same is done with this repo.                                  ;;
 ;;                                                                            ;;
+;; This ends the introduction. The example code follows (in correct order):   ;;
+;;----------------------------------------------------------------------------;;
+;; Windows specific:                                                          ;;
+;; (setq notify-method 'notify-via-growl)                                     ;;
+;;----------------------------------------------------------------------------;;
+;; Cross platform:                                                            ;;
 ;; (setq my-external-library-location "/path/to/git/folders")                 ;;
 ;;                                                                            ;;
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
 ;; Or, more simply:                                                           ;;
 ;; (load-file (concat my-external-library-location "/emacs/init.el"))         ;;
-;;----------------------------------------------------------------------------;;
-;; Windows specific:                                                          ;;
-;; (setq notify-method 'notify-via-growl) Must be placed *before* above code. ;;
 ;;----------------------------------------------------------------------------;;
 
 
