@@ -32,6 +32,7 @@
 ;;----------------------------------------------------------------------------;;
 ;; Cross platform:                                                            ;;
 ;; (setq my-external-library-location "/path/to/git/folders")                 ;;
+;; (setq my-twitter-timelines '(":home" "#emacs" "#ResetTheNet"))             ;;
 ;;                                                                            ;;
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
@@ -292,7 +293,8 @@
 
 ;; Twitter
 (setq twittering-use-master-password t
-      twittering-icon-mode t)
+      twittering-icon-mode t
+      twittering-initial-timeline-spec-string my-twitter-timelines)
 
 ;; Eshell Prompt
 (setq eshell-prompt-function
