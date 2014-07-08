@@ -25,12 +25,12 @@
 ;; choose a folder as base, and do 'git clone <repo>' for each package.       ;;
 ;; Usually, the same is done with this repo.                                  ;;
 ;;                                                                            ;;
-;; (setq external-library-location "/path/to/git/folders")                    ;;
+;; (setq my-external-library-location "/path/to/git/folders")                 ;;
 ;;                                                                            ;;
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
 ;; Or, more simply:                                                           ;;
-;; (load-file (concat external-library-location "/emacs/init.el"))            ;;
+;; (load-file (concat my-external-library-location "/emacs/init.el"))         ;;
 ;;----------------------------------------------------------------------------;;
 ;; Windows specific:                                                          ;;
 ;; (setq notify-method 'notify-via-growl) Must be placed *before* above code. ;;
@@ -42,12 +42,12 @@
 ;;----------------------------------------------------------------------------;;
 ;; Load path for various external libraries, managed with git.
 
-(unless (boundp 'external-library-location)
+(unless (boundp 'my-external-library-location)
   (error "External library location not defined!"))
 
-(add-to-list 'load-path external-library-location)
+(add-to-list 'load-path my-external-library-location)
 
-(let* ((my-lisp-dir external-library-location)
+(let* ((my-lisp-dir my-external-library-location)
        (default-directory my-lisp-dir)
        (orig-load-path load-path))
   (setq load-path (cons my-lisp-dir nil))
@@ -250,7 +250,7 @@
 
 ;; Auto-complete
 (add-to-list 'ac-dictionary-directories
-             (concat external-library-location "/auto-complete/dict"))
+             (concat my-external-library-location "/auto-complete/dict"))
 (ac-config-default)
 
 ;; Code Formatting
@@ -358,7 +358,7 @@
           (lambda ()
             (interactive)
             (kill-buffer "*scratch*")
-            (find-file (concat external-library-location "/.scratch"))
+            (find-file (concat my-external-library-location "/.scratch"))
             (rename-buffer "*scratch*")
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
