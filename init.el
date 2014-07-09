@@ -68,6 +68,7 @@
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
+(require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
