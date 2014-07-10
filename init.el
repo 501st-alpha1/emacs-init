@@ -165,10 +165,20 @@
 (defun my-group(string)
   (concat "[" string "]"))
 
- 
 (defun my-increment-eshell-command-count ()
   "Increments the eshell command count var."
   (incf my-eshell-command-count))
+(defun my-smooth-scroll-down ()
+  (interactive)
+  (dolist (n '(16 8 4 2 1))
+    (sit-for (/ 1.0 (+ n 20)))
+    (scroll-up n)))
+
+(defun my-smooth-scroll-up ()
+  (interactive)
+  (dolist (n '(16 8 4 2 1))
+    (sit-for (/ 1.0 (+ n 20)))
+    (scroll-down n)))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
@@ -186,6 +196,8 @@
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
 (global-set-key (kbd "C-c H") 'hs-hide-all)
+(global-set-key (kbd "<prior>") 'my-smooth-scroll-down)
+(global-set-key (kbd "<next>") 'my-smooth-scroll-up)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
