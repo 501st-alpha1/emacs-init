@@ -71,6 +71,7 @@
 (require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
+(require 'elscreen)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
@@ -313,6 +314,9 @@
                              (format "%s" eshell-last-command-status)))
            ;; And end here
            nl (if (= (user-uid) 0) "# " "$ ")))))
+
+;; Elscreen
+(setq elscreen-display-tab nil)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
