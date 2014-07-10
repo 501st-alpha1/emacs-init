@@ -65,6 +65,7 @@
 ;; Using require so it is obvious when something breaks
 
 (load "2048.el") ;; Breaks with require, probably because of number-only name.
+(require 'alist) ;; Required by elscreen-buffer-list...
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
@@ -72,6 +73,7 @@
 (require 'deft)
 (require 'editorconfig)
 (require 'elscreen)
+(require 'elscreen-buffer-list)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
@@ -316,7 +318,8 @@
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
 ;; Elscreen
-(setq elscreen-display-tab nil)
+(setq elscreen-display-tab nil
+      elscreen-buffer-list-enabled t)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
@@ -373,6 +376,9 @@
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
             (cd "~")))
+
+;; Elscreen
+(add-hook 'emacs-startup-hook 'elscreen-start)
 
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
