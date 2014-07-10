@@ -168,17 +168,31 @@
 (defun my-increment-eshell-command-count ()
   "Increments the eshell command count var."
   (incf my-eshell-command-count))
+
+(defun my-smooth-scroll (down)
+  (if down
+      (setq my-scroll 'scroll-up)
+    (setq my-scroll 'scroll-down))
+  (let ((n 1)
+        (scrolled 0)
+        (next-scroll 1)
+        (height (- (window-height) 3)))
+    (while (< next-scroll height)
+      (sit-for (/ 1.0 (+ n 20)))
+      (funcall my-scroll n)
+      (setq scrolled (+ scrolled n))
+      (setq n (lsh n 1))
+      (setq next-scroll (+ next-scroll n)))
+    (unless (= scrolled height)
+      (funcall my-scroll (- height scrolled)))))
+
 (defun my-smooth-scroll-down ()
   (interactive)
-  (dolist (n '(16 8 4 2 1))
-    (sit-for (/ 1.0 (+ n 20)))
-    (scroll-up n)))
+  (my-smooth-scroll t))
 
 (defun my-smooth-scroll-up ()
   (interactive)
-  (dolist (n '(16 8 4 2 1))
-    (sit-for (/ 1.0 (+ n 20)))
-    (scroll-down n)))
+  (my-smooth-scroll nil))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
