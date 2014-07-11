@@ -210,8 +210,8 @@
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
 (global-set-key (kbd "C-c H") 'hs-hide-all)
-(global-set-key (kbd "<prior>") 'my-smooth-scroll-down)
-(global-set-key (kbd "<next>") 'my-smooth-scroll-up)
+(global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
+(global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
