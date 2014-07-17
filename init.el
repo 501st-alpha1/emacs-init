@@ -80,7 +80,7 @@
 (require 'erc-log)
 (require 'erc-match)
 (require 'facebook)
-(require 'fic-mode) ;; TODO find git repo
+(require 'fic-mode)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit-gitflow)
