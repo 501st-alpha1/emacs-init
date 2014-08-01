@@ -81,7 +81,7 @@
 (require 'erc-log)
 (require 'erc-match)
 (require 'facebook)
-(require 'fic-mode) ;; TODO find git repo
+(require 'fic-mode)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit-gitflow)
@@ -300,8 +300,10 @@
 
 ;; IRC
 (setq erc-kill-server-buffer-on-quit t
-    erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
-                                 "324" "329" "332" "333" "353" "477"))
+      erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                "324" "329" "332" "333" "353" "477")
+      erc-server-reconnect-timeout 30
+      erc-server-reconnect-attempts 10)
 
 ;; Navigation
 (ido-mode)
