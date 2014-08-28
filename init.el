@@ -82,6 +82,7 @@
 (require 'erc-match)
 (require 'facebook)
 (require 'fic-mode)
+(require 'flymake)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit-gitflow)
