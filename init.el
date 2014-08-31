@@ -428,6 +428,10 @@
 ;; Git
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
+;; Markdown
+(add-hook 'markdown-mode-hook (lambda ()
+                                (flyspell-mode-on)))
+
 ;; Ruby
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
 
