@@ -91,6 +91,7 @@
 (require 'mew)
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
+(require 'org-trello)
 (require 'python)
 (require 'ruby-electric)
 (require 'simple-rtm)
@@ -365,6 +366,11 @@
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Org Trello
+(add-to-list 'auto-mode-alist '("\\.trello\\.org\\'" . (lambda ()
+                                                         (org-mode)
+                                                         (org-trello-mode))))
 
 ;; Web
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
