@@ -303,8 +303,12 @@
 (setq erc-kill-server-buffer-on-quit t
       erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477")
+      erc-log-channels-directory "~/.erc/logs/"
+      erc-log-insert-log-on-open nil
+      erc-log-channels t
       erc-server-reconnect-timeout 30
       erc-server-reconnect-attempts 10)
+(erc-autojoin-mode 1)
 
 ;; Navigation
 (ido-mode)
