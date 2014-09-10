@@ -327,7 +327,7 @@
         ("php" . (("open" "close")
                   ("open" "close")))))
 (setq web-mode-engines-alist
-      '(("php"   . "\\.phtml\\'")
+      '(("php"   . "\\.php\\'")
         ("blade" . "\\.blade\\.")
         ("erb"   . "\\.erb\\'")))
 
