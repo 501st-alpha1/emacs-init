@@ -25,6 +25,11 @@
 ;; choose a folder as base, and do 'git clone <repo>' for each package.       ;;
 ;; Usually, the same is done with this repo.                                  ;;
 ;;                                                                            ;;
+;; Note also that this init file assumes you will generally do                ;;
+;; `emacs --daemon` once, and connect to it later with emacsclient. This is   ;;
+;; used over (server-start) in case I want to start a non-server instance,    ;;
+;; to debug changes to this config, for example.                              ;;
+;;                                                                            ;;
 ;; This ends the introduction. The example code follows (in correct order):   ;;
 ;;----------------------------------------------------------------------------;;
 ;; Windows specific:                                                          ;;
