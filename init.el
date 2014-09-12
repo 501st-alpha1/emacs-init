@@ -207,27 +207,26 @@
   (interactive)
   (my-smooth-scroll nil))
 
-(defun my-irc-actual()
+(defun my-irc-actual(selected-name)
   "Connect to specific IRC server."
-  (interactive)
-  (let ((my-selected-name (read-string "Which IRC server? ")))
-    (dotimes (i 3)
-      (let* ((curr-server (nth i my-irc-servers))
-             (name (car curr-server))
-             (ip (nth 1 curr-server))
-             (ssl (nth 2 curr-server))
-             (port (nth 3 curr-server))
-             (pass (nth 4 curr-server)))
-        (when (equal name my-selected-name)
-          (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
-          (when ssl
-            (if pass
-                (erc-tls :server ip :port port :password pass)
-              (erc-tls :server ip :port port)))
-          (unless ssl
-            (if pass
-                (erc :server ip :port port :password pass)
-              (erc :server ip :port port))))))))
+  (interactive "sWhich IRC server? ")
+  (dotimes (i 3)
+    (let* ((curr-server (nth i my-irc-servers))
+           (name (car curr-server))
+           (ip (nth 1 curr-server))
+           (ssl (nth 2 curr-server))
+           (port (nth 3 curr-server))
+           (pass (nth 4 curr-server)))
+      (when (equal name selected-name)
+        (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
+        (when ssl
+          (if pass
+              (erc-tls :server ip :port port :password pass)
+            (erc-tls :server ip :port port)))
+        (unless ssl
+          (if pass
+              (erc :server ip :port port :password pass)
+            (erc :server ip :port port)))))))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
