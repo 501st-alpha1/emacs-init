@@ -220,9 +220,14 @@
              (pass (nth 4 curr-server)))
         (when (equal name my-selected-name)
           (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
-          (if ssl
-              (erc-tls :server ip :port port :password pass)
-            (erc :server ip :port port :password pass)))))))
+          (when ssl
+            (if pass
+                (erc-tls :server ip :port port :password pass)
+              (erc-tls :server ip :port port)))
+          (unless ssl
+            (if pass
+                (erc :server ip :port port :password pass)
+              (erc :server ip :port port))))))))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
