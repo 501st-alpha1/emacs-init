@@ -38,6 +38,11 @@
 ;; Cross platform:                                                            ;;
 ;; (setq my-external-library-location "/path/to/git/folders")                 ;;
 ;; (setq my-twitter-timelines '(":home" "#emacs" "#ResetTheNet"))             ;;
+;; (setq my-irc-servers '(("alias" "irc.example.com" t 6667 "password")       ;;
+;;                        ("freenode" "irc.freenode.net" nil 6667 nil))       ;;
+;;   where the parameters of each sub-list are as follows: a custom name for  ;;
+;;   the server (given as input to my-irc-actual), the server IP, whether or  ;;
+;;   not to use SSL, the server port, and the password.                       ;;
 ;;                                                                            ;;
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
@@ -201,6 +206,23 @@
 (defun my-smooth-scroll-up ()
   (interactive)
   (my-smooth-scroll nil))
+
+(defun my-irc-actual()
+  "Connect to specific IRC server."
+  (interactive)
+  (let ((my-selected-name (read-string "Which IRC server? ")))
+    (dotimes (i 3)
+      (let* ((curr-server (nth i my-irc-servers))
+             (name (car curr-server))
+             (ip (nth 1 curr-server))
+             (ssl (nth 2 curr-server))
+             (port (nth 3 curr-server))
+             (pass (nth 4 curr-server)))
+        (when (equal name my-selected-name)
+          (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
+          (if ssl
+              (erc-tls :server ip :port port :password pass)
+            (erc :server ip :port port :password pass)))))))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
