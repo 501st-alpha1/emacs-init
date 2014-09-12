@@ -43,6 +43,7 @@
 ;;   where the parameters of each sub-list are as follows: a custom name for  ;;
 ;;   the server (given as input to my-irc-actual), the server IP, whether or  ;;
 ;;   not to use SSL, the server port, and the password.                       ;;
+;; (setq erc-nick '("myUserName" "secondChoice" "thirdChoice"))               ;;
 ;;                                                                            ;;
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
