@@ -228,6 +228,14 @@
               (erc :server ip :port port :password pass)
             (erc :server ip :port port)))))))
 
+(defun my-irc-maybe()
+  "Connect to all IRC servers."
+  (interactive)
+  (when (y-or-n-p "Connect to all IRC servers? ")
+    (dotimes (i (length my-irc-servers))
+      (let ((name (car (nth i my-irc-servers))))
+        (my-irc-actual name)))))
+
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
