@@ -210,7 +210,7 @@
 (defun my-irc-actual(selected-name)
   "Connect to specific IRC server."
   (interactive "sWhich IRC server? ")
-  (dotimes (i 3)
+  (dotimes (i (length my-irc-servers))
     (let* ((curr-server (nth i my-irc-servers))
            (name (car curr-server))
            (ip (nth 1 curr-server))
