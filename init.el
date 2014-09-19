@@ -110,6 +110,7 @@
 (require 'twittering-mode)
 (require 'web-mode)
 (require 'whitespace)
+(require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Custom Variables                                 ;;
