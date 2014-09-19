@@ -100,6 +100,7 @@
 (require 'magit)
 (require 'markdown-mode)
 (require 'mew)
+(require 'mk-project)
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
 (require 'org-trello)
