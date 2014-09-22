@@ -265,6 +265,7 @@
 
 ;; Color theme
 (set-background-color "#000000")
+(set-foreground-color "#FFFFFF")
 
 ;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
