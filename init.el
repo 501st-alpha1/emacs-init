@@ -264,7 +264,10 @@
 ;; Various global settings, including mode line config.
 
 ;; Color theme
-(set-face-attribute 'default nil :foreground "white" :background "black")
+(set-face-attribute 'default nil
+                    :foreground "white"
+                    :background "black"
+                    :height 90)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
