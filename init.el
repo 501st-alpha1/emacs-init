@@ -93,6 +93,8 @@
 (require 'erc-match)
 (require 'facebook)
 (require 'fic-mode)
+(require 'flx)
+(require 'flx-ido)
 (require 'flymake)
 (require 'hideshow)
 (require 'inf-ruby)
@@ -369,6 +371,7 @@
       ido-auto-merge-work-directories-length -1
       ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
+(flx-ido-mode 1)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
