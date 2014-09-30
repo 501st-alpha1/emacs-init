@@ -252,6 +252,7 @@
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
+(global-set-key (kbd "C-c i r c") 'my-irc-actual)
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
