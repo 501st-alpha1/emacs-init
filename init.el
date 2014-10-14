@@ -115,6 +115,7 @@
 (require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
+(require 'workgroups2)
 (require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
@@ -263,6 +264,8 @@
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
+(setq wg-prefix-key (kbd "C-z"))
+
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
 ;;----------------------------------------------------------------------------;;
@@ -285,6 +288,7 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
+(workgroups-mode 1)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
