@@ -112,6 +112,7 @@
 (require 'simple-rtm)
 (require 'tls)
 (require 'twittering-mode)
+(require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
 (require 'xkcd)
@@ -411,6 +412,10 @@
 ;; Elscreen
 ;(setq elscreen-display-tab nil
 ;      elscreen-buffer-list-enabled t)
+
+;; Uniquify
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+      uniquify-min-dir-content 999)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Default-Frame-Alist                              ;;
