@@ -84,8 +84,8 @@
 (require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
-(require 'elscreen)
-(require 'elscreen-buffer-list)
+;(require 'elscreen)
+;(require 'elscreen-buffer-list)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
@@ -409,8 +409,8 @@
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
 ;; Elscreen
-(setq elscreen-display-tab nil
-      elscreen-buffer-list-enabled t)
+;(setq elscreen-display-tab nil
+;      elscreen-buffer-list-enabled t)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Default-Frame-Alist                              ;;
@@ -481,7 +481,7 @@
             (cd "~")))
 
 ;; Elscreen
-(add-hook 'emacs-startup-hook 'elscreen-start)
+;(add-hook 'emacs-startup-hook 'elscreen-start)
 
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
