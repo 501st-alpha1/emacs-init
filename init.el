@@ -84,8 +84,8 @@
 (require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
-(require 'elscreen)
-(require 'elscreen-buffer-list)
+;(require 'elscreen)
+;(require 'elscreen-buffer-list)
 (require 'emms-setup)
 (require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
@@ -112,8 +112,10 @@
 (require 'simple-rtm)
 (require 'tls)
 (require 'twittering-mode)
+(require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
+(require 'workgroups2)
 (require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
@@ -262,6 +264,8 @@
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
+(setq wg-prefix-key (kbd "C-z"))
+
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
 ;;----------------------------------------------------------------------------;;
@@ -284,6 +288,7 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
+(workgroups-mode 1)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
@@ -411,8 +416,12 @@
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
 ;; Elscreen
-(setq elscreen-display-tab nil
-      elscreen-buffer-list-enabled t)
+;(setq elscreen-display-tab nil
+;      elscreen-buffer-list-enabled t)
+
+;; Uniquify
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+      uniquify-min-dir-content 999)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Default-Frame-Alist                              ;;
@@ -483,7 +492,7 @@
             (cd "~")))
 
 ;; Elscreen
-(add-hook 'emacs-startup-hook 'elscreen-start)
+;(add-hook 'emacs-startup-hook 'elscreen-start)
 
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
