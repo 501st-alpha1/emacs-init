@@ -389,7 +389,9 @@
 ;; Twitter
 (setq twittering-use-master-password t
       twittering-icon-mode t
-      twittering-initial-timeline-spec-string my-twitter-timelines)
+      twittering-initial-timeline-spec-string my-twitter-timelines
+      ; Format retweets as "<my comments> RT <name>: <tweet>"
+      twittering-retweet-format '(nil _ " RT %s: %t"))
 
 ;; Eshell Prompt
 (setq eshell-prompt-function
