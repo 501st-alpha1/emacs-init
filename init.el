@@ -288,6 +288,8 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
+(setq wg-session-file my-workgroups
+      wg-emacs-exit-save-behavior 'ask)
 (workgroups-mode 1)
 
 ;; 2048
