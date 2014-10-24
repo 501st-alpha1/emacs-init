@@ -107,6 +107,7 @@
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
 (require 'org-trello)
+(require 'perspective)
 (require 'python)
 (require 'ruby-electric)
 (require 'simple-rtm)
@@ -115,7 +116,7 @@
 (require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
-(require 'workgroups2)
+;(require 'workgroups2)
 (require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
@@ -264,7 +265,8 @@
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
-(setq wg-prefix-key (kbd "C-z"))
+;(setq wg-prefix-key (kbd "C-z"))
+(setq persp-mode-prefix-key "C-z")
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
@@ -288,9 +290,10 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
-(setq wg-session-file my-workgroups
-      wg-emacs-exit-save-behavior 'ask)
-(workgroups-mode 1)
+;(setq wg-session-file my-workgroups
+;      wg-emacs-exit-save-behavior 'ask)
+;(workgroups-mode 1)
+(persp-mode)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
