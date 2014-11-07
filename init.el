@@ -293,6 +293,7 @@
                     :height 90)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(set-cursor-color "#FFFFFF")
 
 ;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
