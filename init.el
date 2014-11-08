@@ -503,6 +503,11 @@
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
 
+;; Zip files in Dired
+(eval-after-load "dired-aux"
+   '(add-to-list 'dired-compress-file-suffixes
+                 '("\\.zip\\'" ".zip" "unzip")))
+
 ;; Git
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
