@@ -88,6 +88,18 @@
 ;(require 'elscreen)
 ;(require 'elscreen-buffer-list)
 (require 'emms-setup)
+(require 'em-alias)
+(require 'em-banner)
+(require 'em-basic)
+(require 'em-cmpl)
+(require 'em-dirs)
+(require 'em-glob)
+(require 'em-hist)
+(require 'em-ls)
+(require 'em-prompt)
+(require 'em-script)
+(require 'em-term)
+(require 'em-unix)
 (require 'erc-chess) ;; TODO find git repo
 (require 'erc-join)
 (require 'erc-log)
@@ -281,6 +293,7 @@
                     :height 90)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(set-cursor-color "#FFFFFF")
 
 ;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
