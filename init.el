@@ -396,6 +396,7 @@
       ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
 (flx-ido-mode 1)
+(setq magit-completing-read-function 'magit-ido-completing-read)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
