@@ -85,8 +85,6 @@
 (require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
-;(require 'elscreen)
-;(require 'elscreen-buffer-list)
 (require 'emms-setup)
 (require 'em-alias)
 (require 'em-banner)
@@ -129,7 +127,6 @@
 (require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
-;(require 'workgroups2)
 (require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
@@ -278,7 +275,6 @@
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
-;(setq wg-prefix-key (kbd "C-z"))
 (setq persp-mode-prefix-key "C-z")
 
 (define-key xkcd-mode-map (kbd "g") 'xkcd-get)
@@ -308,9 +304,6 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
-;(setq wg-session-file my-workgroups
-;      wg-emacs-exit-save-behavior 'ask)
-;(workgroups-mode 1)
 (persp-mode)
 
 ;; 2048
@@ -439,10 +432,6 @@
            ;; And end here
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
-;; Elscreen
-;(setq elscreen-display-tab nil
-;      elscreen-buffer-list-enabled t)
-
 ;; Uniquify
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets
       uniquify-min-dir-content 999)
@@ -514,9 +503,6 @@
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
             (cd "~")))
-
-;; Elscreen
-;(add-hook 'emacs-startup-hook 'elscreen-start)
 
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
