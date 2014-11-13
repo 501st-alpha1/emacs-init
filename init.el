@@ -148,6 +148,23 @@
 
 (defun my-kill-buffer()
   (interactive)
+  (catch 'quit
+    (save-window-excursion
+      (let (done)
+        (when (and buffer-file-name (buffer-modified-p))
+          (while (not done)
+            (let ((response (read-char-choice
+                             (format "Save file %s? (y, n, d, q) " (buffer-file-name))
+                             '(?y ?n ?d ?q))))
+              (setq done (cond
+                          ((eq response ?q) (throw 'quit nil))
+                          ((eq response ?y) (save-buffer) t)
+                          ((eq response ?n) (set-buffer-modified-p nil) t)
+                          ((eq response ?d) (diff-buffer-with-file) nil))))))
+        (kill-buffer (current-buffer))))))
+
+(defun my-kill-buffer-and-jump()
+  (interactive)
   (kill-buffer)
   (other-window 1))
 
@@ -261,7 +278,8 @@
 ;; Tried to keep from conflicting with defaults, but no guarantees.
 ;; Did not use standard C-c prefix.
 
-(global-set-key (kbd "C-x K") 'my-kill-buffer)
+(global-set-key (kbd "C-x k") 'my-kill-buffer)
+(global-set-key (kbd "C-x K") 'my-kill-buffer-and-jump)
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-c b") 'bury-buffer)
