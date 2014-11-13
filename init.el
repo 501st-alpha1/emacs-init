@@ -281,6 +281,10 @@
 ;(setq wg-prefix-key (kbd "C-z"))
 (setq persp-mode-prefix-key "C-z")
 
+(define-key xkcd-mode-map (kbd "g") 'xkcd-get)
+(define-key xkcd-mode-map (kbd "n") 'xkcd-next)
+(define-key xkcd-mode-map (kbd "p") 'xkcd-prev)
+
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
 ;;----------------------------------------------------------------------------;;
