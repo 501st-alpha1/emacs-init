@@ -408,6 +408,7 @@
 (ido-mode)
 (setq ido-separator "\n"
       ido-auto-merge-work-directories-length -1
+      ido-default-buffer-method 'selected-window
       ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
 (flx-ido-mode 1)
