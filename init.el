@@ -323,6 +323,7 @@
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
 (persp-mode)
+(global-aggressive-indent-mode)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
