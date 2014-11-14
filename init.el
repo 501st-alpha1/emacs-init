@@ -425,6 +425,8 @@
       '(("php"   . "\\.php\\'")
         ("blade" . "\\.blade\\.")
         ("erb"   . "\\.erb\\'")))
+(setq web-mode-script-padding 2
+      web-mode-style-padding 2)
 
 ;; Twitter
 (setq twittering-use-master-password t
