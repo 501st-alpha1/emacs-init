@@ -454,8 +454,8 @@
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
 ;; Uniquify
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets
-      uniquify-min-dir-content 999)
+;(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+;      uniquify-min-dir-content 999)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Default-Frame-Alist                              ;;
