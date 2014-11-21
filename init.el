@@ -292,8 +292,8 @@
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
-;; Tried to keep from conflicting with defaults, but no guarantees.
-;; Did not use standard C-c prefix.
+;; Tried to keep from conflicting with defaults, but no guarantees (especially
+;; where functionality is replacement for default binding).
 
 (global-set-key (kbd "C-x k") 'my-kill-buffer)
 (global-set-key (kbd "C-x K") 'my-kill-buffer-and-jump)
