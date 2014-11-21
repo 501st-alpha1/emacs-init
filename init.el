@@ -77,7 +77,6 @@
 
 (load "2048.el") ;; Breaks with require, probably because of number-only name.
 (require 'aggressive-indent)
-(require 'alist) ;; Required by elscreen-buffer-list...
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
