@@ -156,42 +156,6 @@
 ;; Mostly designed to be called directly (or have a key-combo bound to).
 ;; All begin with prefix "my".
 
-(defun my-prev-window()
-  (interactive)
-  (other-window -1))
-
-(defun my-kill-buffer()
-  (interactive)
-  (catch 'quit
-    (save-window-excursion
-      (let (done)
-        (if (and buffer-file-name (buffer-modified-p))
-            (progn
-              (while (not done)
-                (let ((response (read-char-choice
-                                 (format "Save file %s? (y, n, d, q) "
-                                         (buffer-file-name))
-                                 '(?y ?n ?d ?q))))
-                  (setq done (cond
-                              ((eq response ?q) (throw 'quit nil))
-                              ((eq response ?y) (save-buffer) t)
-                              ((eq response ?n) (set-buffer-modified-p nil) t)
-                              ((eq response ?d) (diff-buffer-with-file) nil)))))
-              (kill-buffer (current-buffer)))
-          ;; Else
-          (ido-kill-buffer))))))
-
-(defun my-kill-buffer-and-jump()
-  (interactive)
-  (kill-buffer)
-  (other-window 1))
-
-(defun my-insert-space-or-newline-and-indent()
-  (interactive)
-  (if (>= (current-column) fill-column)
-      (newline-and-indent)
-    (insert-char ? )))
-
 ;; Open the window all over that screen.
 (defun my-all-over-the-screen (&number)
   (interactive)
@@ -201,14 +165,6 @@
       (split-window-horizontally)))
   (balance-windows)
   (follow-mode t))
-
-;; TODO: kill only sub-dirs of given dir?
-(defun my-kill-dired-buffers ()
-  (interactive)
-  (mapc (lambda (buffer)
-          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
-            (kill-buffer buffer)))
-        (buffer-list)))
 
 (defun my-directory-files (directory &optional full match nosort)
   "Like `directory-files', but excluding \".\" and \"..\"."
@@ -236,30 +192,11 @@
   "Increments the eshell command count var."
   (incf my-eshell-command-count))
 
-(defun my-smooth-scroll (down)
-  (if down
-      (setq my-scroll 'scroll-up)
-    (setq my-scroll 'scroll-down))
-  (let ((n 1)
-        (scrolled 0)
-        (next-scroll 1)
-        (height (- (window-height) 3)))
-    (while (< next-scroll height)
-      (sit-for (/ 1.0 (+ n 20)))
-      (funcall my-scroll n)
-      (setq scrolled (+ scrolled n))
-      (setq n (lsh n 1))
-      (setq next-scroll (+ next-scroll n)))
-    (unless (= scrolled height)
-      (funcall my-scroll (- height scrolled)))))
-
-(defun my-smooth-scroll-down ()
+(defun my-insert-space-or-newline-and-indent()
   (interactive)
-  (my-smooth-scroll t))
-
-(defun my-smooth-scroll-up ()
-  (interactive)
-  (my-smooth-scroll nil))
+  (if (>= (current-column) fill-column)
+      (newline-and-indent)
+    (insert-char ? )))
 
 (defun my-irc-actual(selected-name)
   "Connect to specific IRC server."
@@ -288,6 +225,69 @@
   (dotimes (i (length my-irc-servers))
     (let ((name (car (nth i my-irc-servers))))
       (my-irc-actual name))))
+
+(defun my-kill-buffer()
+  (interactive)
+  (catch 'quit
+    (save-window-excursion
+      (let (done)
+        (if (and buffer-file-name (buffer-modified-p))
+            (progn
+              (while (not done)
+                (let ((response (read-char-choice
+                                 (format "Save file %s? (y, n, d, q) "
+                                         (buffer-file-name))
+                                 '(?y ?n ?d ?q))))
+                  (setq done (cond
+                              ((eq response ?q) (throw 'quit nil))
+                              ((eq response ?y) (save-buffer) t)
+                              ((eq response ?n) (set-buffer-modified-p nil) t)
+                              ((eq response ?d) (diff-buffer-with-file) nil)))))
+              (kill-buffer (current-buffer)))
+          ;; Else
+          (ido-kill-buffer))))))
+
+(defun my-kill-buffer-and-jump()
+  (interactive)
+  (kill-buffer)
+  (other-window 1))
+
+;; TODO: kill only sub-dirs of given dir?
+(defun my-kill-dired-buffers ()
+  (interactive)
+  (mapc (lambda (buffer)
+          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
+            (kill-buffer buffer)))
+        (buffer-list)))
+
+(defun my-prev-window()
+  (interactive)
+  (other-window -1))
+
+(defun my-smooth-scroll (down)
+  (if down
+      (setq my-scroll 'scroll-up)
+    (setq my-scroll 'scroll-down))
+  (let ((n 1)
+        (scrolled 0)
+        (next-scroll 1)
+        (height (- (window-height) 3)))
+    (while (< next-scroll height)
+      (sit-for (/ 1.0 (+ n 20)))
+      (funcall my-scroll n)
+      (setq scrolled (+ scrolled n))
+      (setq n (lsh n 1))
+      (setq next-scroll (+ next-scroll n)))
+    (unless (= scrolled height)
+      (funcall my-scroll (- height scrolled)))))
+
+(defun my-smooth-scroll-down ()
+  (interactive)
+  (my-smooth-scroll t))
+
+(defun my-smooth-scroll-up ()
+  (interactive)
+  (my-smooth-scroll nil))
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
