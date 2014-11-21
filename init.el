@@ -295,10 +295,13 @@
 ;; Tried to keep from conflicting with defaults, but no guarantees (especially
 ;; where functionality is replacement for default binding).
 
+;; Prefix of C-x
 (global-set-key (kbd "C-x k") 'my-kill-buffer)
 (global-set-key (kbd "C-x K") 'my-kill-buffer-and-jump)
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Prefix of C-c
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
@@ -307,9 +310,12 @@
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
 (global-set-key (kbd "C-c H") 'hs-hide-all)
+
+;; Scrolling
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
+;; XKCD
 (define-key xkcd-mode-map (kbd "g") 'xkcd-get)
 (define-key xkcd-mode-map (kbd "n") 'xkcd-next)
 (define-key xkcd-mode-map (kbd "p") 'xkcd-prev)
