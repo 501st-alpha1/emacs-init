@@ -153,7 +153,7 @@
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
-;; Mostly designed to be called directly (or have a key-combo bound to.
+;; Mostly designed to be called directly (or have a key-combo bound to).
 ;; All begin with prefix "my".
 
 (defun my-prev-window()
