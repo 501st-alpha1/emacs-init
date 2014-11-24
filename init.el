@@ -302,6 +302,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Prefix of C-c
+(global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
@@ -435,6 +436,9 @@
                            "*Messages*" "Async Shell Command"))
 (flx-ido-mode 1)
 (setq magit-completing-read-function 'magit-ido-completing-read)
+
+;; Org Mode
+(setq org-use-fast-todo-selection t)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
