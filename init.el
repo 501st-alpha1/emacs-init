@@ -77,7 +77,6 @@
 
 (load "2048.el") ;; Breaks with require, probably because of number-only name.
 (require 'aggressive-indent)
-(require 'alist) ;; Required by elscreen-buffer-list...
 (require 'auto-complete-config)
 (require 'battery)
 (require 'chess)
@@ -85,8 +84,6 @@
 (require 'csv-mode) ;; TODO find git repo
 (require 'deft)
 (require 'editorconfig)
-;(require 'elscreen)
-;(require 'elscreen-buffer-list)
 (require 'emms-setup)
 (require 'em-alias)
 (require 'em-banner)
@@ -120,6 +117,21 @@
 (require 'notify) ;; TODO find git repo
 (require 'org-feed)
 (require 'org-trello)
+;; FIXME
+(setq persp-mode-map
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "C-z s") 'persp-switch)
+        (define-key map (kbd "C-z k") 'persp-remove-buffer)
+        (define-key map (kbd "C-z c") 'persp-kill)
+        (define-key map (kbd "C-z r") 'persp-rename)
+        (define-key map (kbd "C-z a") 'persp-add-buffer)
+        (define-key map (kbd "C-z A") 'persp-set-buffer)
+        (define-key map (kbd "C-z i") 'persp-import)
+        (define-key map (kbd "C-z n")       'persp-next)
+        (define-key map (kbd "C-z <right>") 'persp-next)
+        (define-key map (kbd "C-z p")       'persp-prev)
+        (define-key map (kbd "C-z <left>")  'persp-prev)
+        map))
 (require 'perspective)
 (require 'python)
 (require 'ruby-electric)
@@ -129,7 +141,6 @@
 (require 'uniquify)
 (require 'web-mode)
 (require 'whitespace)
-;(require 'workgroups2)
 (require 'xkcd)
 
 ;;----------------------------------------------------------------------------;;
@@ -142,23 +153,8 @@
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
-;; Mostly designed to be called directly (or have a key-combo bound to.
+;; Mostly designed to be called directly (or have a key-combo bound to).
 ;; All begin with prefix "my".
-
-(defun my-prev-window()
-  (interactive)
-  (other-window -1))
-
-(defun my-kill-buffer()
-  (interactive)
-  (kill-buffer)
-  (other-window 1))
-
-(defun my-insert-space-or-newline-and-indent()
-  (interactive)
-  (if (>= (current-column) fill-column)
-      (newline-and-indent)
-    (insert-char ? )))
 
 ;; Open the window all over that screen.
 (defun my-all-over-the-screen (&number)
@@ -170,22 +166,14 @@
   (balance-windows)
   (follow-mode t))
 
-;; TODO: kill only sub-dirs of given dir?
-(defun my-kill-dired-buffers ()
-  (interactive)
-  (mapc (lambda (buffer)
-          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
-            (kill-buffer buffer)))
-        (buffer-list)))
-
 (defun my-directory-files (directory &optional full match nosort)
   "Like `directory-files', but excluding \".\" and \"..\"."
   (let* ((files (cons nil (directory-files directory full match nosort)))
          (parent files)
          (current (cdr files))
          (exclude (if (full) ;; For absolute paths
-                    (list (concat directory "/.")
-                          (concat directory "/..")))
+                      (list (concat directory "/.")
+                            (concat directory "/..")))
                   (list "." "..")) ;; For relative paths
          (file nil))
     (while (and current exclude)
@@ -203,6 +191,78 @@
 (defun my-increment-eshell-command-count ()
   "Increments the eshell command count var."
   (incf my-eshell-command-count))
+
+(defun my-insert-space-or-newline-and-indent()
+  (interactive)
+  (if (>= (current-column) fill-column)
+      (newline-and-indent)
+    (insert-char ? )))
+
+(defun my-irc-actual(selected-name)
+  "Connect to specific IRC server."
+  (interactive "sWhich IRC server? ")
+  (dotimes (i (length my-irc-servers))
+    (let* ((curr-server (nth i my-irc-servers))
+           (name (car curr-server))
+           (ip (nth 1 curr-server))
+           (ssl (nth 2 curr-server))
+           (port (nth 3 curr-server))
+           (pass (nth 4 curr-server)))
+      (when (equal name selected-name)
+        (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
+        (when ssl
+          (if pass
+              (erc-tls :server ip :port port :password pass)
+            (erc-tls :server ip :port port)))
+        (unless ssl
+          (if pass
+              (erc :server ip :port port :password pass)
+            (erc :server ip :port port)))))))
+
+(defun my-irc-all()
+  "Connect to all IRC servers."
+  (interactive)
+  (dotimes (i (length my-irc-servers))
+    (let ((name (car (nth i my-irc-servers))))
+      (my-irc-actual name))))
+
+(defun my-kill-buffer()
+  (interactive)
+  (catch 'quit
+    (save-window-excursion
+      (let (done)
+        (if (and buffer-file-name (buffer-modified-p))
+            (progn
+              (while (not done)
+                (let ((response (read-char-choice
+                                 (format "Save file %s? (y, n, d, q) "
+                                         (buffer-file-name))
+                                 '(?y ?n ?d ?q))))
+                  (setq done (cond
+                              ((eq response ?q) (throw 'quit nil))
+                              ((eq response ?y) (save-buffer) t)
+                              ((eq response ?n) (set-buffer-modified-p nil) t)
+                              ((eq response ?d) (diff-buffer-with-file) nil)))))
+              (kill-buffer (current-buffer)))
+          ;; Else
+          (ido-kill-buffer))))))
+
+(defun my-kill-buffer-and-jump()
+  (interactive)
+  (kill-buffer)
+  (other-window 1))
+
+;; TODO: kill only sub-dirs of given dir?
+(defun my-kill-dired-buffers ()
+  (interactive)
+  (mapc (lambda (buffer)
+          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
+            (kill-buffer buffer)))
+        (buffer-list)))
+
+(defun my-prev-window()
+  (interactive)
+  (other-window -1))
 
 (defun my-smooth-scroll (down)
   (if down
@@ -229,44 +289,20 @@
   (interactive)
   (my-smooth-scroll nil))
 
-(defun my-irc-actual(selected-name)
-  "Connect to specific IRC server."
-  (interactive "sWhich IRC server? ")
-  (dotimes (i (length my-irc-servers))
-    (let* ((curr-server (nth i my-irc-servers))
-           (name (car curr-server))
-           (ip (nth 1 curr-server))
-           (ssl (nth 2 curr-server))
-           (port (nth 3 curr-server))
-           (pass (nth 4 curr-server)))
-      (when (equal name selected-name)
-        (message "name %s ip %s ssl %s port %s pass %s" name ip ssl port pass)
-        (when ssl
-          (if pass
-              (erc-tls :server ip :port port :password pass)
-            (erc-tls :server ip :port port)))
-        (unless ssl
-          (if pass
-              (erc :server ip :port port :password pass)
-            (erc :server ip :port port)))))))
-
-(defun my-irc-maybe()
-  "Connect to all IRC servers."
-  (interactive)
-  (when (y-or-n-p "Connect to all IRC servers? ")
-    (dotimes (i (length my-irc-servers))
-      (let ((name (car (nth i my-irc-servers))))
-        (my-irc-actual name)))))
-
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
 ;;----------------------------------------------------------------------------;;
-;; Tried to keep from conflicting with defaults, but no guarantees.
-;; Did not use standard C-c prefix.
+;; Tried to keep from conflicting with defaults, but no guarantees (especially
+;; where functionality is replacement for default binding).
 
-(global-set-key (kbd "C-x K") 'my-kill-buffer)
+;; Prefix of C-x
+(global-set-key (kbd "C-x k") 'my-kill-buffer)
+(global-set-key (kbd "C-x K") 'my-kill-buffer-and-jump)
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Prefix of C-c
+(global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
@@ -275,11 +311,15 @@
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
 (global-set-key (kbd "C-c H") 'hs-hide-all)
+
+;; Scrolling
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
 
-;(setq wg-prefix-key (kbd "C-z"))
-(setq persp-mode-prefix-key "C-z")
+;; XKCD
+(define-key xkcd-mode-map (kbd "g") 'xkcd-get)
+(define-key xkcd-mode-map (kbd "n") 'xkcd-next)
+(define-key xkcd-mode-map (kbd "p") 'xkcd-prev)
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Global Config                                  ;;
@@ -304,10 +344,8 @@
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
-;(setq wg-session-file my-workgroups
-;      wg-emacs-exit-save-behavior 'ask)
-;(workgroups-mode 1)
 (persp-mode)
+(global-aggressive-indent-mode)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
@@ -393,9 +431,14 @@
 (ido-mode)
 (setq ido-separator "\n"
       ido-auto-merge-work-directories-length -1
+      ido-default-buffer-method 'selected-window
       ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                            "*Messages*" "Async Shell Command"))
 (flx-ido-mode 1)
+(setq magit-completing-read-function 'magit-ido-completing-read)
+
+;; Org Mode
+(setq org-use-fast-todo-selection t)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
@@ -409,6 +452,8 @@
       '(("php"   . "\\.php\\'")
         ("blade" . "\\.blade\\.")
         ("erb"   . "\\.erb\\'")))
+(setq web-mode-script-padding 2
+      web-mode-style-padding 2)
 
 ;; Twitter
 (setq twittering-use-master-password t
@@ -434,13 +479,9 @@
            ;; And end here
            nl (if (= (user-uid) 0) "# " "$ ")))))
 
-;; Elscreen
-;(setq elscreen-display-tab nil
-;      elscreen-buffer-list-enabled t)
-
 ;; Uniquify
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets
-      uniquify-min-dir-content 999)
+;(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+;      uniquify-min-dir-content 999)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Default-Frame-Alist                              ;;
@@ -509,9 +550,6 @@
             (lisp-interaction-mode)
             (bury-buffer "*scratch*")
             (cd "~")))
-
-;; Elscreen
-;(add-hook 'emacs-startup-hook 'elscreen-start)
 
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
