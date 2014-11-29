@@ -262,6 +262,22 @@
             (kill-buffer buffer)))
         (buffer-list)))
 
+(defun my-org-agenda-skip-tag(tag &optional others)
+  "Skip all entries that correspond to TAG.
+
+If OTHERS is true, skip all entries that do not correspond to TAG."
+  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+        (current-headline (or (and (org-at-heading-p)
+                                   (point))
+                              (save-excursion (org-back-to-heading)))))
+    (if others
+        (if (not (member tag (org-get-tags-at current-headline)))
+            next-headline
+          nil)
+      (if (member tag (org-get-tags-at current-headline))
+          next-headline
+        nil))))
+
 (defun my-prev-window()
   (interactive)
   (other-window -1))
