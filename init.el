@@ -321,6 +321,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 
 ;; Prefix of C-c
 (global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
