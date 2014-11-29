@@ -51,6 +51,8 @@
 ;; (load-file (concat my-external-library-location "/emacs/init.el"))         ;;
 ;;----------------------------------------------------------------------------;;
 
+;; Log beginning and end of loading, to help with troubleshooting.
+(message "Begin loading Scott Weldon's custom init-file.")
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Custom Load Path                                  ;;
@@ -586,3 +588,6 @@
                   ;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
                   web-mode-display-table nil)
             (local-set-key (kbd "RET") 'newline-and-indent)))
+
+(message "End of Scott Weldon's custom init-file.")
+;; End init.el
