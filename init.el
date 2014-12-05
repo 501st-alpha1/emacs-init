@@ -458,7 +458,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (setq magit-completing-read-function 'magit-ido-completing-read)
 
 ;; Org Mode
-(setq org-use-fast-todo-selection t)
+(setq org-use-fast-todo-selection t
+      org-agenda-skip-deadline-prewarning-if-scheduled t)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
