@@ -430,6 +430,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 2)
 (setq c-basic-indent 2)
+(setq sh-basic-offset 2)
+(setq sh-indentation 2)
 (setq lisp-basic-indent 2)
 (setq lisp-basic-offset 2)
 (setq-default fill-column 70)
