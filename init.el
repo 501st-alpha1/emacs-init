@@ -279,6 +279,11 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
           next-headline
         nil))))
 
+(defun my-org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done."
+  (let (org-log-done org-log-states)
+    (org-todo (if (= n-not-done 0) "DONE" (if (= n-done 0) "TODO" "STARTED")))))
+
 (defun my-prev-window()
   (interactive)
   (other-window -1))
@@ -460,6 +465,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 ;; Org Mode
 (setq org-use-fast-todo-selection t
       org-agenda-skip-deadline-prewarning-if-scheduled t)
+(add-hook 'org-after-todo-statistics-hook 'my-org-summary-todo)
 
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
