@@ -466,7 +466,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 
 ;; Org Mode
 (setq org-use-fast-todo-selection t
-      org-agenda-skip-deadline-prewarning-if-scheduled t)
+      org-agenda-skip-deadline-prewarning-if-scheduled t
+      org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-statistics-hook 'my-org-summary-todo)
 
 ;; Web mode
