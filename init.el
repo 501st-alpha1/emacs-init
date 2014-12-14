@@ -358,6 +358,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
                     :height 90)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 (set-cursor-color "#FFFFFF")
 
 ;(global-whitespace-mode t)
