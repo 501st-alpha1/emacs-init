@@ -359,7 +359,6 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(set-cursor-color "#FFFFFF")
 
 ;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
@@ -519,6 +518,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 ;;----------------------------------------------------------------------------;;
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(cursor-color . "white"))
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
