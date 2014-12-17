@@ -80,6 +80,7 @@
 (load "2048.el") ;; Breaks with require, probably because of number-only name.
 (require 'aggressive-indent)
 (require 'auto-complete-config)
+(require 'auto-dim-other-buffers)
 (require 'battery)
 (require 'chess)
 (require 'csharp-mode) ;; TODO find git repo
@@ -359,6 +360,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(setq auto-dim-other-buffers-face "grey5")
 
 ;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
@@ -371,6 +373,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (setq battery-mode-line-format " [%b%p%%] ")
 (persp-mode)
 (global-aggressive-indent-mode)
+(auto-dim-other-buffers-mode)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
