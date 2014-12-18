@@ -192,6 +192,11 @@
 (defun my-group(string)
   (concat "[" string "]"))
 
+;;(defun my-ido-complete-and-exit()
+;;(interactive)
+;;(ido-complete)
+;;(ido-exit-minibuffer))
+
 (defun my-increment-eshell-command-count ()
   "Increments the eshell command count var."
   (incf my-eshell-command-count))
@@ -341,6 +346,9 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 ;; Scrolling
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
+
+;; Ido
+;;(define-key ido-common-completion-map (kbd "RET") #'my-ido-complete-and-exit)
 
 ;; XKCD
 (define-key xkcd-mode-map (kbd "g") 'xkcd-get)
