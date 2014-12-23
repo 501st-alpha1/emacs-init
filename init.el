@@ -258,7 +258,7 @@
 
 (defun my-kill-buffer-and-jump()
   (interactive)
-  (kill-buffer)
+  (my-kill-buffer)
   (other-window 1))
 
 ;; TODO: kill only sub-dirs of given dir?
