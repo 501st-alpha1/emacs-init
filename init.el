@@ -368,7 +368,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'auto-dim-other-buffers-face nil :background "grey5")
+(set-face-attribute 'auto-dim-other-buffers-face nil :background "grey7")
 
 ;;(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines space-before-tab
