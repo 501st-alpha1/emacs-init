@@ -597,11 +597,6 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 ;; Eshell
 (add-hook 'eshell-after-prompt-hook 'my-increment-eshell-command-count)
 
-;; Zip files in Dired
-(eval-after-load "dired-aux"
-   '(add-to-list 'dired-compress-file-suffixes
-                 '("\\.zip\\'" ".zip" "unzip")))
-
 ;; Git
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
@@ -625,10 +620,19 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
                   web-mode-css-indent-offset 2
                   web-mode-code-indent-offset 2
                   web-mode-enable-auto-pairing t
-                  ;web-mode-enable-whitespaces t
-                  ;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
+                  ;;web-mode-enable-whitespaces t
+                  ;;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
                   web-mode-display-table nil)
             (local-set-key (kbd "RET") 'newline-and-indent)))
+
+;;----------------------------------------------------------------------------;;
+;;                              Eval-After-Load                               ;;
+;;----------------------------------------------------------------------------;;
+
+;; Allow interaction with zip files in Dired
+(eval-after-load "dired-aux"
+  '(add-to-list 'dired-compress-file-suffixes
+                '("\\.zip\\'" ".zip" "unzip")))
 
 (message "End of Scott Weldon's custom init-file.")
 ;; End init.el
