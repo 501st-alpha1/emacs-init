@@ -382,6 +382,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (persp-mode)
 (global-aggressive-indent-mode)
 (auto-dim-other-buffers-mode)
+(setq ring-bell-function #'ignore)
 
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
