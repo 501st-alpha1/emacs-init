@@ -442,6 +442,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (add-to-list 'ac-dictionary-directories
              (concat my-external-library-location "/auto-complete/dict"))
 (ac-config-default)
+(setq ac-ignore-case nil)
 
 ;; Code Formatting
 (setq-default indent-tabs-mode nil)
