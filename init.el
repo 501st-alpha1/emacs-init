@@ -504,8 +504,9 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (setq twittering-use-master-password t
       twittering-icon-mode t
       twittering-initial-timeline-spec-string my-twitter-timelines
-      twittering-status-format "%i %s,%FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}:
-%FOLD[  ]{%T %FACE[font-lock-comment-face]{// from %f%L%r%R} %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}}
+      twittering-status-format "%i %s,%FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}: %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}
+%FOLD[  ]{%T
+%FACE[font-lock-comment-face]{// from %f%L%r%R}}
 "
       ;; Format retweets as "<my comments> RT <name>: <tweet>"
       twittering-retweet-format '(nil _ " RT %s: %t"))
