@@ -384,6 +384,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
 
+(add-to-list 'safe-local-variable-values '(auto-revert-mode . 1))
+
 ;; 2048
 (defface 2048-2-face '((t (:foreground "red")))
   "Face used for 2" :group '2048-game)
