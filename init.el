@@ -146,6 +146,7 @@
 (require 'web-mode)
 (require 'whitespace)
 (require 'xkcd)
+(require 'yaml-mode)
 
 ;;----------------------------------------------------------------------------;;
 ;;                           Custom Variables                                 ;;
