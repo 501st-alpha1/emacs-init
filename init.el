@@ -384,7 +384,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (global-aggressive-indent-mode)
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
-(git-gutter-mode 1)
+(global-git-gutter-mode)
 
 (add-to-list 'safe-local-variable-values '(auto-revert-mode . 1))
 
