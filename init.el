@@ -380,7 +380,6 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
-(persp-mode)
 (global-aggressive-indent-mode)
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
