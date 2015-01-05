@@ -466,6 +466,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
       erc-log-insert-log-on-open nil
       erc-log-channels t
       erc-server-reconnect-timeout 30
+      erc-join-buffer 'bury
       erc-server-reconnect-attempts 10)
 (erc-autojoin-mode 1)
 
