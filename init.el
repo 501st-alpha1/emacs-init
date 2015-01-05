@@ -109,6 +109,7 @@
 (require 'flx)
 (require 'flx-ido)
 (require 'flymake)
+(require 'git-gutter)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit)
@@ -383,6 +384,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (global-aggressive-indent-mode)
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
+(git-gutter-mode 1)
 
 (add-to-list 'safe-local-variable-values '(auto-revert-mode . 1))
 
