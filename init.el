@@ -482,6 +482,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 
 ;; Org Mode
 (setq org-use-fast-todo-selection t
+      org-agenda-start-on-weekday nil
       org-agenda-skip-deadline-prewarning-if-scheduled t
       org-log-into-drawer t
       org-todo-keyword-faces '(("WAITING" . "yellow"))
