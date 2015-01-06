@@ -138,6 +138,7 @@
         (define-key map (kbd "C-z <left>")  'persp-prev)
         map))
 (require 'perspective)
+(require 'persp-projectile)
 (require 'projectile)
 (require 'python)
 (require 'ruby-electric)
