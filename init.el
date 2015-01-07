@@ -157,34 +157,6 @@
 (require 'yaml-mode)
 
 ;;----------------------------------------------------------------------------;;
-;;                           Custom Variables                                 ;;
-;;----------------------------------------------------------------------------;;
-
-;; This section is for internal use only, thus, defvar.
-(defvar my-eshell-command-count 0 "Variable to keep track of command count")
-(make-variable-buffer-local 'my-eshell-command-count)
-
-;; This section is to allow customization, thus, defcustom.
-(defgroup weldon nil
-  "Variable group for Scott Weldon's init file.")
-
-(defun my-set-variable(symbol value)
-  (set-default symbol value))
-
-(defcustom my-twitter-timelines
-  '("(:home)")
-  "List of timelines to open when launching twittering-mode.
-
-To modify this variable, you can use the customize interface, or do e.g.:
-(setq my-twitter-timelines '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
-"
-  :type '(repeat string)
-  :tag "My Twitter Timelines"
-  :group 'weldon
-  :set 'my-set-variable
-  )
-
-;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
 ;;----------------------------------------------------------------------------;;
 ;; Mostly designed to be called directly (or have a key-combo bound to).
@@ -324,6 +296,9 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (interactive)
   (other-window -1))
 
+(defun my-set-variable(symbol value)
+  (set-default symbol value))
+
 (defun my-smooth-scroll (down)
   (if down
       (setq my-scroll 'scroll-up)
@@ -348,6 +323,31 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (defun my-smooth-scroll-up ()
   (interactive)
   (my-smooth-scroll nil))
+
+;;----------------------------------------------------------------------------;;
+;;                           Custom Variables                                 ;;
+;;----------------------------------------------------------------------------;;
+
+;; This section is for internal use only, thus, defvar.
+(defvar my-eshell-command-count 0 "Variable to keep track of command count")
+(make-variable-buffer-local 'my-eshell-command-count)
+
+;; This section is to allow customization, thus, defcustom.
+(defgroup weldon nil
+  "Variable group for Scott Weldon's init file.")
+
+(defcustom my-twitter-timelines
+  '("(:home)")
+  "List of timelines to open when launching twittering-mode.
+
+To modify this variable, you can use the customize interface, or do e.g.:
+(setq my-twitter-timelines '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
+"
+  :type '(repeat string)
+  :tag "My Twitter Timelines"
+  :group 'weldon
+  :set 'my-set-variable
+  )
 
 ;;----------------------------------------------------------------------------;;
 ;;                          Keyboard Shortcuts                                ;;
