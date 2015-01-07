@@ -30,6 +30,12 @@
 ;; used over (server-start) in case I want to start a non-server instance,    ;;
 ;; to debug changes to this config, for example.                              ;;
 ;;                                                                            ;;
+;; In addition to the config listed here, I have defined several variables    ;;
+;; that are `custom-set`-able. To edit them through the customize interface,  ;;
+;; do `M-x customize-group RET weldon RET`. Otherwise, search for             ;;
+;; "Custom Variables" below to see what variables are available, and set them ;;
+;; by doing `(setq <var> <val>)` at any point in your main init file.         ;;
+;;                                                                            ;;
 ;; This ends the introduction. The example code follows (in correct order):   ;;
 ;;----------------------------------------------------------------------------;;
 ;; Windows specific:                                                          ;;
@@ -37,7 +43,6 @@
 ;;----------------------------------------------------------------------------;;
 ;; Cross platform:                                                            ;;
 ;; (setq my-external-library-location "/path/to/git/folders")                 ;;
-;; (setq my-twitter-timelines '(":home" "#emacs" "#ResetTheNet"))             ;;
 ;; (setq my-irc-servers '(("alias" "irc.example.com" t 6667 "password")       ;;
 ;;                        ("freenode" "irc.freenode.net" nil 6667 nil))       ;;
 ;;   where the parameters of each sub-list are as follows: a custom name for  ;;
@@ -155,8 +160,29 @@
 ;;                           Custom Variables                                 ;;
 ;;----------------------------------------------------------------------------;;
 
+;; This section is for internal use only, thus, defvar.
 (defvar my-eshell-command-count 0 "Variable to keep track of command count")
 (make-variable-buffer-local 'my-eshell-command-count)
+
+;; This section is to allow customization, thus, defcustom.
+(defgroup weldon nil
+  "Variable group for Scott Weldon's init file.")
+
+(defun my-set-variable(symbol value)
+  (set-default symbol value))
+
+(defcustom my-twitter-timelines
+  '("(:home)")
+  "List of timelines to open when launching twittering-mode.
+
+To modify this variable, you can use the customize interface, or do e.g.:
+(setq my-twitter-timelines '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
+"
+  :type '(repeat string)
+  :tag "My Twitter Timelines"
+  :group 'weldon
+  :set 'my-set-variable
+  )
 
 ;;----------------------------------------------------------------------------;;
 ;;                             Functions                                      ;;
