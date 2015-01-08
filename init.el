@@ -296,8 +296,9 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (interactive)
   (other-window -1))
 
-(defun my-set-variable(symbol value)
-  (set-default symbol value))
+(defun my-set-twitter-timelines(symbol value)
+  (set-default symbol value)
+  (set-default 'twittering-initial-timeline-spec-string value))
 
 (defun my-smooth-scroll (down)
   (if down
@@ -341,12 +342,13 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   "List of timelines to open when launching twittering-mode.
 
 To modify this variable, you can use the customize interface, or do e.g.:
-(setq my-twitter-timelines '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
+(customize-set-variable 'my-twitter-timelines
+                        '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
 "
   :type '(repeat string)
   :tag "My Twitter Timelines"
   :group 'weldon
-  :set 'my-set-variable
+  :set 'my-set-twitter-timelines
   )
 
 ;;----------------------------------------------------------------------------;;
@@ -537,7 +539,6 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; Twitter
 (setq twittering-use-master-password t
       twittering-icon-mode t
-      twittering-initial-timeline-spec-string my-twitter-timelines
       twittering-status-format "%i %s,%FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}: %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}
 %FOLD[  ]{%T
 %FACE[font-lock-comment-face]{// from %f%L%r%R}}
