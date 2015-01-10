@@ -115,6 +115,7 @@
 (require 'flx-ido)
 (require 'flymake)
 (require 'git-gutter)
+(require 'gnus)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit)
@@ -489,6 +490,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq-default fill-column 70)
 (setq ruby-indent-size 2)
 (setq python-indent-offset 2)
+
+;; Gnus
+(setq gnus-save-newsrc-file nil)
 
 ;; IRC
 (setq erc-kill-server-buffer-on-quit t
