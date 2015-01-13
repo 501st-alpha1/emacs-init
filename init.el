@@ -672,6 +672,26 @@ To modify this variable, you can use the customize interface, or do e.g.:
             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;----------------------------------------------------------------------------;;
+;;                                   Advice                                   ;;
+;;----------------------------------------------------------------------------;;
+;; Any `defadvice` stuff goes here.
+
+(defadvice mouse-set-point (around mouse-set-point (event) activate)
+  (let ((event-name (car event))
+        (event-target-window (caadr event)))
+    (if (and (eql 'down-mouse-1 event-name)
+             (eql event-target-window (frame-selected-window)))
+        ad-do-it
+      (set-frame-selected-window nil event-target-window))))
+
+(defadvice mouse-drag-region (around mouse-drag-region (event) activate)
+  (let ((event-name (car event))
+        (event-target-window (caadr event)))
+    (if (eql event-target-window (frame-selected-window))
+        ad-do-it
+      (set-frame-selected-window nil event-target-window))))
+
+;;----------------------------------------------------------------------------;;
 ;;                              Eval-After-Load                               ;;
 ;;----------------------------------------------------------------------------;;
 
