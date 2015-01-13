@@ -492,7 +492,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq python-indent-offset 2)
 
 ;; Gnus
-(setq gnus-save-newsrc-file nil)
+(setq gnus-save-newsrc-file nil
+      gnus-use-cache t)
 
 ;; IRC
 (setq erc-kill-server-buffer-on-quit t
