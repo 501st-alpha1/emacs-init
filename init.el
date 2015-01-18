@@ -627,6 +627,20 @@ To modify this variable, you can use the customize interface, or do e.g.:
             (set-face-foreground 'diff-removed "red")
             (set-face-foreground 'diff-added "green")))
 
+;; Hook to keep a shell in sync with current dired buffer.
+;; FIXME:
+;;   Doesn't work for switching to existing dired buffer. (Workaround by
+;;     refreshing buffer with `g`.)
+;;   Shell prompt gets smashed together. (Workaround by adding \n to front of
+;;     shell prompt.)
+(add-hook 'dired-after-readin-hook (lambda()
+                                     (unless (get-buffer "*sync-shell*")
+                                       (shell "*sync-shell*"))
+                                     (process-send-string
+                                      (get-buffer "*sync-shell*")
+                                      (format "cd %s\n" default-directory))
+                                     (message "Switched to new directory")))
+
 ;; Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
