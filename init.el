@@ -150,6 +150,7 @@
 (require 'python)
 (require 'ruby-electric)
 (require 'simple-rtm)
+(require 'soundcloud)
 (require 'tls)
 (require 'twittering-mode)
 (require 'uniquify)
