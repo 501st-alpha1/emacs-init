@@ -328,6 +328,13 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (interactive)
   (my-smooth-scroll nil))
 
+(defun my-tomorrow-day ()
+  "Returns the day of the week for tomorrow."
+  (let ((day (1+ (string-to-number (format-time-string "%w")))))
+    (if (= day 7)
+        0
+      day)))
+
 ;;----------------------------------------------------------------------------;;
 ;;                           Custom Variables                                 ;;
 ;;----------------------------------------------------------------------------;;
@@ -717,6 +724,18 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (eval-after-load "dired-aux"
   '(add-to-list 'dired-compress-file-suffixes
                 '("\\.zip\\'" ".zip" "unzip")))
+
+(eval-after-load 'parse-time
+  '(progn
+     (setq parse-time-weekdays (nconc parse-time-weekdays
+                                      `(("tom" . ,(my-tomorrow-day)))))
+     (defvar parse-time-tomorrow-timer
+       (run-at-time "12am"
+                    (* 24 60 60)
+                    (lambda ()
+                      (setf (cdr (assoc "tom" parse-time-weekdays))
+                            (my-tomorrow-day))))
+       "Timer to reset the day to which \"tom\" refers in timestamps.")))
 
 (message "End of Scott Weldon's custom init-file.")
 ;; End init.el
