@@ -83,6 +83,8 @@
 ;; Using require so it is obvious when something breaks
 
 (load "2048.el") ;; Breaks with require, probably because of number-only name.
+(require 'ace-jump-mode)
+(require 'ace-window)
 (require 'aggressive-indent)
 (require 'auto-complete-config)
 (require 'auto-dim-other-buffers)
