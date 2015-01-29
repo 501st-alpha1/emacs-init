@@ -156,6 +156,7 @@
 (require 'tls)
 (require 'twittering-mode)
 (require 'uniquify)
+(require 'vagrant-tramp)
 (require 'web-mode)
 (require 'whitespace)
 (require 'xkcd)
@@ -738,6 +739,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
                       (setf (cdr (assoc "tom" parse-time-weekdays))
                             (my-tomorrow-day))))
        "Timer to reset the day to which \"tom\" refers in timestamps.")))
+
+(eval-after-load 'tramp
+  '(vagrant-tramp-enable))
 
 (message "End of Scott Weldon's custom init-file.")
 ;; End init.el
