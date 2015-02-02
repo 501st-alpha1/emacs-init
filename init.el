@@ -129,6 +129,7 @@
 (require 'notify) ;; TODO find git repo
 (require 'org)
 (require 'org-checklist) ;; TODO find git repo
+(require 'org-expiry)
 (require 'org-feed)
 (require 'org-trello)
 ;; FIXME
