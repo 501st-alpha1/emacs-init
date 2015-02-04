@@ -536,6 +536,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-agenda-start-on-weekday nil
       org-agenda-skip-deadline-prewarning-if-scheduled t
       org-log-into-drawer t
+      org-expiry-inactive-timestamps t
+      org-expiry-created-property-name "CREATED"
       org-todo-keyword-faces '(("WAITING" . "yellow"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-statistics-hook 'my-org-summary-todo)
