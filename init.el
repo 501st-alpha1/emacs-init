@@ -506,6 +506,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Gnus
 (setq gnus-save-newsrc-file nil
+      gnus-summary-make-false-root nil
       gnus-use-cache t)
 
 ;; IRC
