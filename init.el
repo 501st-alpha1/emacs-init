@@ -556,7 +556,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
         ("blade" . "\\.blade\\.")
         ("erb"   . "\\.erb\\'")))
 (setq web-mode-script-padding 2
-      web-mode-style-padding 2)
+      web-mode-style-padding 2
+      web-mode-enable-auto-closing t)
 
 ;; Twitter
 (setq twittering-use-master-password t
