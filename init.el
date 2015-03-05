@@ -131,7 +131,7 @@
 (require 'org-checklist) ;; TODO find git repo
 (require 'org-expiry)
 (require 'org-feed)
-(require 'org-sync)
+(require 'os) ;; org-sync
 (require 'org-trello)
 ;; FIXME
 (setq persp-mode-map
