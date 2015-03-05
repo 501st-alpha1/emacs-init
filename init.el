@@ -544,6 +544,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-statistics-hook 'my-org-summary-todo)
 
+;; Projectil
+(setq projectile-enable-caching t)
+
 ;; Web mode
 (set-face-attribute 'web-mode-whitespace-face nil :background "red")
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "Blue")
