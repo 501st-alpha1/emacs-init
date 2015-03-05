@@ -304,6 +304,10 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (interactive)
   (other-window -1))
 
+(defun my-set-org-todo(symbol value)
+  (set-default symbol value)
+  (add-to-list 'org-agenda-files value))
+
 (defun my-set-twitter-timelines(symbol value)
   (set-default symbol value)
   (set-default 'twittering-initial-timeline-spec-string value))
@@ -364,6 +368,19 @@ To modify this variable, you can use the customize interface, or do e.g.:
   :tag "My Twitter Timelines"
   :group 'weldon
   :set 'my-set-twitter-timelines
+  )
+
+(defcustom my-org-todo-file
+  'nil
+  "Full path to file used as todo-list in org-mode.
+
+To modify this variable, you can use the customize interface, or do e.g.:
+\(customize-set-variable 'my-org-todo-file \"/path/to/org/todo/file\")
+"
+  :type '(string)
+  :tag "My Org Todo File"
+  :group 'weldon
+  :set 'my-set-org-todo
   )
 
 ;;----------------------------------------------------------------------------;;
