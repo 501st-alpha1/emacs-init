@@ -357,7 +357,7 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   "List of timelines to open when launching twittering-mode.
 
 To modify this variable, you can use the customize interface, or do e.g.:
-(customize-set-variable 'my-twitter-timelines
+\(customize-set-variable 'my-twitter-timelines
                         '(\"(:home)\" \"(#emacs)\" \"(#gnu)\"))
 "
   :type '(repeat string)
