@@ -673,12 +673,20 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;;     refreshing buffer with `g`.)
 ;;   Shell prompt gets smashed together. (Workaround by adding \n to front of
 ;;     shell prompt.)
+;;   Doesn't automatically sync dirs. (Workaround by pressing `M-RET`.)
+;;     WIP fix below
+;;
+;; For testing:
+;; (setq dired-after-readin-hook nil)
 (add-hook 'dired-after-readin-hook (lambda()
                                      (unless (get-buffer "*sync-shell*")
                                        (shell "*sync-shell*"))
                                      (process-send-string
                                       (get-buffer "*sync-shell*")
                                       (format "cd %s\n" default-directory))
+                                     ;; (save-current-buffer
+                                     ;;   (switch-to-buffer "*sync-shell*")
+                                     ;;   (shell-resync-dirs))
                                      (message "Switched to new directory")))
 
 ;; Lisp mode
