@@ -554,6 +554,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-deadline-warning-days 7
       org-agenda-start-on-weekday nil
       org-agenda-skip-deadline-prewarning-if-scheduled t
+      org-agenda-sorting-strategy '((agenda time-up priority-down tag-up))
       org-log-into-drawer t
       org-expiry-inactive-timestamps t
       org-expiry-created-property-name "CREATED"
