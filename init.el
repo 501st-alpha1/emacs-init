@@ -309,6 +309,17 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
           (setq continue nil)))
       ret)))
 
+(defun my-org-any-subheading-has-any-state(list)
+  " Check if any subentries of the current heading have any of the states in
+the given list. Pass `org-not-done-keywords` to see if task is open, or pass
+`org-done-keywords` to see if task is closed."
+  (let (value)
+    (catch 'break
+      (dolist (element list value)
+        (setq value (my-org-any-subheading-has-state element))
+        (when value
+          (throw 'break t))))))
+
 (defun my-org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done."
   (let (org-log-done org-log-states)
