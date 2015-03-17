@@ -304,6 +304,11 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (interactive)
   (other-window -1))
 
+(defun my-print-elements-of-list(list)
+  (while list
+    (print (car list))
+    (setq list (cdr list))))
+
 (defun my-set-org-todo(symbol value)
   (set-default symbol value)
   (add-to-list 'org-agenda-files value))
