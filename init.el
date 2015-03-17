@@ -320,6 +320,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (when value
           (throw 'break t))))))
 
+;; TODO: make this more customizable
 (defun my-org-summary-todo ()
   "Switch entry to DONE when all subentries are done."
   (save-excursion
