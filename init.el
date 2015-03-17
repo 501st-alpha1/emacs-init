@@ -295,6 +295,20 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
           next-headline
         nil))))
 
+(defun my-org-any-subheading-has-state(state)
+  "Check if any subentries of the current heading have the given state."
+  (save-excursion
+    (org-down-element)
+    (let ((ret nil)
+          (continue t))
+      (while continue
+        (when (string= (nth 2 (org-heading-components)) state)
+          (setq ret t)
+          (setq continue nil))
+        (unless (org-get-next-sibling)
+          (setq continue nil)))
+      ret)))
+
 (defun my-org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done."
   (let (org-log-done org-log-states)
