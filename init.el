@@ -320,15 +320,21 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (when value
           (throw 'break t))))))
 
-(defun my-org-summary-todo (n-done n-not-done)
+(defun my-org-summary-todo ()
   "Switch entry to DONE when all subentries are done."
-  (let (org-log-done org-log-states)
-    (org-todo (if (= n-not-done 0) "DONE"
-                (if (= n-done 0)
-                    (if (my-org-any-subheading-has-state "STARTED")
-                        "STARTED"
-                      "TODO")
-                  "STARTED")))))
+  (save-excursion
+    (org-up-element)
+    (when (nth 2 (org-heading-components))
+      (let (org-log-done org-log-states)
+        (org-todo (if (not (my-org-any-subheading-has-any-state
+                            org-not-done-keywords))
+                      "DONE"
+                    (if (not (my-org-any-subheading-has-any-state
+                              org-done-keywords))
+                        (if (my-org-any-subheading-has-state "STARTED")
+                            "STARTED"
+                          "TODO")
+                      "STARTED")))))))
 
 (defun my-prev-window()
   (interactive)
@@ -595,7 +601,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-expiry-created-property-name "CREATED"
       org-todo-keyword-faces '(("WAITING" . "yellow"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
-(add-hook 'org-after-todo-statistics-hook 'my-org-summary-todo)
+(add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
 
 ;; Projectil
 (setq projectile-enable-caching t)
