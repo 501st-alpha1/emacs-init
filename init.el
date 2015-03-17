@@ -312,7 +312,12 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
 (defun my-org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done."
   (let (org-log-done org-log-states)
-    (org-todo (if (= n-not-done 0) "DONE" (if (= n-done 0) "TODO" "STARTED")))))
+    (org-todo (if (= n-not-done 0) "DONE"
+                (if (= n-done 0)
+                    (if (my-org-any-subheading-has-state "STARTED")
+                        "STARTED"
+                      "TODO")
+                  "STARTED")))))
 
 (defun my-prev-window()
   (interactive)
