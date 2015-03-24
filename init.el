@@ -131,6 +131,7 @@
 (require 'org-checklist) ;; TODO find git repo
 (require 'org-expiry)
 (require 'org-feed)
+(require 'org-magit)
 (require 'os) ;; org-sync
 (require 'org-trello)
 ;; FIXME
