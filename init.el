@@ -676,6 +676,10 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                                          (org-mode)
                                                          (org-trello-mode))))
 
+;; Ruby
+(add-to-list 'auto-mode-alist '("\\Capfile\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\Gemfile\\'" . ruby-mode))
+
 ;; Web
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
