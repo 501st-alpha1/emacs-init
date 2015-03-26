@@ -679,6 +679,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Ruby
 (add-to-list 'auto-mode-alist '("\\Capfile\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\Cheffile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Gemfile\\'" . ruby-mode))
 
 ;; Web
