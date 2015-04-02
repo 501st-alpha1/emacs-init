@@ -490,6 +490,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
 (global-git-gutter-mode)
+(projectile-global-mode)
 
 (add-to-list 'safe-local-variable-values '(auto-revert-mode . 1))
 
@@ -780,8 +781,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                   ;;web-mode-enable-whitespaces t
                   ;;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
                   web-mode-display-table nil)
-            (local-set-key (kbd "RET") 'newline-and-indent)
-            (projectile-mode 1)))
+            (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;----------------------------------------------------------------------------;;
 ;;                                   Advice                                   ;;
