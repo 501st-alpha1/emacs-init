@@ -492,6 +492,12 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-git-gutter-mode)
 (projectile-global-mode)
 
+(setq projectile-mode-line '(:eval
+                             (if (projectile-project-root)
+                                 (format " Projectile[%s]"
+                                         (projectile-project-name))
+                               "")))
+
 (add-to-list 'safe-local-variable-values '(auto-revert-mode . 1))
 
 ;; 2048
