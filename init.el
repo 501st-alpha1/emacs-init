@@ -770,7 +770,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Markdown
 (add-hook 'markdown-mode-hook (lambda ()
-                                (flyspell-mode-on)))
+                                (flyspell-mode 1)))
 
 ;; Ruby
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode t)))
