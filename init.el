@@ -573,6 +573,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq ruby-indent-size 2)
 (setq python-indent-offset 2)
 
+;; Doc View
+(setq doc-view-resolution 300)
+
 ;; Gnus
 (setq gnus-save-newsrc-file nil
       gnus-summary-make-false-root nil
