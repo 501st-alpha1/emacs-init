@@ -92,6 +92,7 @@
 (require 'chess)
 (require 'csharp-mode) ;; TODO find git repo
 (require 'csv-mode) ;; TODO find git repo
+(require 'doc-present)
 (require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
