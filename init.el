@@ -492,6 +492,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq ring-bell-function #'ignore)
 (global-git-gutter-mode)
 (projectile-global-mode)
+(persp-mode 1)
 
 (setq projectile-mode-line '(:eval
                              (if (projectile-project-root)
