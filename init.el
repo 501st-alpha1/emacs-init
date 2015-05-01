@@ -182,6 +182,18 @@
   (balance-windows)
   (follow-mode t))
 
+(defun my-dev-layout(path folder)
+  (let ((fullpath (concat path "/" folder)))
+    (split-window-right)
+    (split-window-right)
+    (balance-windows)
+    (dired fullpath)
+    (other-window 1)
+    (dired fullpath)
+    (other-window 1)
+    (magit-status fullpath 'switch-to-buffer)
+    (persp-rename folder)))
+
 (defun my-directory-files (directory &optional full match nosort)
   "Like `directory-files', but excluding \".\" and \"..\"."
   (let* ((files (cons nil (directory-files directory full match nosort)))
