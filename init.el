@@ -213,6 +213,15 @@
       (setq current (cdr current)))
     (cdr files)))
 
+(defun my-full-magit-log(directory short-name)
+  (magit-status directory)
+  (magit-key-mode-popup-logging)
+  (magit-key-mode-toggle-option 'logging "--all")
+  (magit-key-mode-toggle-option 'logging "--date-order")
+  (magit-key-mode-command 'magit-log)
+  (rename-buffer (concat "*" short-name "-git-log*"))
+  (delete-other-windows))
+
 (defun my-group(string)
   (concat "[" string "]"))
 
