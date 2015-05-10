@@ -835,6 +835,14 @@ To modify this variable, you can use the customize interface, or do e.g.:
         ad-do-it
       (set-frame-selected-window nil event-target-window))))
 
+(defadvice shell-command (after shell-in-new-buffer
+                                (command &optional output-buffer error-buffer))
+  (when (get-buffer "*Async Shell Command*")
+    (with-current-buffer "*Async Shell Command*"
+      (rename-uniquely))))
+
+(ad-activate 'shell-command)
+
 ;;----------------------------------------------------------------------------;;
 ;;                              Eval-After-Load                               ;;
 ;;----------------------------------------------------------------------------;;
