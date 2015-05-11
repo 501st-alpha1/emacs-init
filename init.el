@@ -193,6 +193,9 @@
     (dired fullpath)
     (other-window 1)
     (magit-status fullpath 'switch-to-buffer)
+    (split-window-below)
+    (other-window 1)
+    (shell (concat "*" folder "-shell*"))
     (persp-rename folder)))
 
 (defun my-directory-files (directory &optional full match nosort)
