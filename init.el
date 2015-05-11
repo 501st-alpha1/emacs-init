@@ -90,6 +90,7 @@
 (require 'auto-dim-other-buffers)
 (require 'battery)
 (require 'chess)
+(require 'clang-format)
 (require 'csharp-mode) ;; TODO find git repo
 (require 'csv-mode) ;; TODO find git repo
 (require 'doc-present)
