@@ -119,6 +119,7 @@
 (require 'flymake)
 (require 'git-gutter)
 (require 'gnus)
+(require 'go-mode)
 (require 'hideshow)
 (require 'inf-ruby)
 (require 'magit)
