@@ -137,21 +137,6 @@
 (require 'org-magit)
 (require 'os) ;; org-sync
 (require 'org-trello)
-;; FIXME
-(setq persp-mode-map
-      (let ((map (make-sparse-keymap)))
-        (define-key map (kbd "C-z s") 'persp-switch)
-        (define-key map (kbd "C-z k") 'persp-remove-buffer)
-        (define-key map (kbd "C-z c") 'persp-kill)
-        (define-key map (kbd "C-z r") 'persp-rename)
-        (define-key map (kbd "C-z a") 'persp-add-buffer)
-        (define-key map (kbd "C-z A") 'persp-set-buffer)
-        (define-key map (kbd "C-z i") 'persp-import)
-        (define-key map (kbd "C-z n")       'persp-next)
-        (define-key map (kbd "C-z <right>") 'persp-next)
-        (define-key map (kbd "C-z p")       'persp-prev)
-        (define-key map (kbd "C-z <left>")  'persp-prev)
-        map))
 (require 'perspective)
 (require 'persp-projectile)
 (require 'projectile)
@@ -483,6 +468,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Ido
 ;;(define-key ido-common-completion-map (kbd "RET") #'my-ido-complete-and-exit)
+
+;; Perspective prefix key
+(persp-mode-set-prefix-key (kbd "C-z"))
 
 ;; XKCD
 (define-key xkcd-mode-map (kbd "g") 'xkcd-get)
