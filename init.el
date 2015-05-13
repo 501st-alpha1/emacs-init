@@ -136,6 +136,7 @@
 (require 'org-feed)
 (require 'org-magit)
 (require 'os) ;; org-sync
+(require 'os-github)
 (require 'org-trello)
 (require 'perspective)
 (require 'persp-projectile)
