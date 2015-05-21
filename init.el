@@ -123,6 +123,7 @@
 (require 'go-mode)
 (require 'hideshow)
 (require 'inf-ruby)
+(require 'lorem-ipsum)
 (require 'magit)
 (require 'magit-blame)
 (require 'magit-gitflow)
