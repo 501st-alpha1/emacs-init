@@ -656,6 +656,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
       web-mode-style-padding 2
       web-mode-enable-auto-closing t)
 
+;; Scrolling
+(setq scroll-preserve-screen-position 'always)
+
 ;; Twitter
 (setq twittering-use-master-password t
       twittering-icon-mode t
