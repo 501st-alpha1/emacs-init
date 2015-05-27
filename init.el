@@ -123,7 +123,7 @@
 (require 'go-mode)
 (require 'hideshow)
 (require 'inf-ruby)
-(require 'less-css)
+(require 'less-css-mode)
 (require 'lorem-ipsum)
 (require 'magit)
 (require 'magit-blame)
