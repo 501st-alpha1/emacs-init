@@ -114,6 +114,7 @@
 (require 'erc-log)
 (require 'erc-match)
 (require 'facebook)
+(require 'feature-mode)
 (require 'fic-mode)
 (require 'flx)
 (require 'flx-ido)
