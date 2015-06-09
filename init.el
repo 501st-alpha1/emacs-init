@@ -174,6 +174,7 @@
 
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
+    (persp-switch folder)
     (split-window-right)
     (split-window-right)
     (balance-windows)
@@ -184,8 +185,7 @@
     (magit-status fullpath 'switch-to-buffer)
     (split-window-below)
     (other-window 1)
-    (shell (concat "*" folder "-shell*"))
-    (persp-rename folder)))
+    (shell (concat "*" folder "-shell*"))))
 
 (defun my-directory-files (directory &optional full match nosort)
   "Like `directory-files', but excluding \".\" and \"..\"."
