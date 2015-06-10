@@ -631,7 +631,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-log-into-drawer t
       org-expiry-inactive-timestamps t
       org-expiry-created-property-name "CREATED"
-      org-todo-keyword-faces '(("WAITING" . "yellow"))
+      org-todo-keyword-faces '(("WAITING" . "yellow")
+                               ("DEFERRED" . "purple"))
       org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)"
                                     "APPT(a)" "DEFERRED(f)" "|" "DONE(d)"
                                     "CANCELLED(c)"))
