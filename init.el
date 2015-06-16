@@ -769,8 +769,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                      (process-send-string
                                       (get-buffer "*sync-shell*")
                                       (format "cd %s\n" default-directory))
-                                     ;; (save-current-buffer
-                                     ;;   (switch-to-buffer "*sync-shell*")
+                                     ;; (with-current-buffer "*sync-shell*"
+                                     ;;   (goto-char (point-max))
                                      ;;   (shell-resync-dirs))
                                      (message "Switched to new directory")))
 
