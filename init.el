@@ -659,6 +659,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       '(("php"   . "\\.php\\'")
         ("blade" . "\\.blade\\.")
         ("erb"   . "\\.erb\\'")))
+(add-to-list 'web-mode-indentation-params '("lineup-quotes" . nil))
 (setq web-mode-script-padding 2
       web-mode-style-padding 2
       web-mode-enable-auto-closing t)
