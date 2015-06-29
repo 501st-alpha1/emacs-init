@@ -124,6 +124,7 @@
 (require 'go-mode)
 (require 'hideshow)
 (require 'inf-ruby)
+(require 'ledger-mode)
 (require 'less-css-mode)
 (require 'lorem-ipsum)
 (require 'magit)
