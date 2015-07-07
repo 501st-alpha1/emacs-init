@@ -618,6 +618,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
       erc-server-reconnect-attempts 10)
 (erc-autojoin-mode 1)
 
+;; Magit
+(add-to-list 'magit-log-arguments "--color")
+
 ;; Navigation
 (ido-mode)
 (setq ido-separator "\n"
