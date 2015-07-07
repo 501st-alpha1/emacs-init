@@ -123,6 +123,7 @@
 (require 'gnus)
 (require 'go-mode)
 (require 'hideshow)
+(require 'ido-ubiquitous)
 (require 'inf-ruby)
 (require 'ledger-mode)
 (require 'less-css-mode)
