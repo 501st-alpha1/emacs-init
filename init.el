@@ -184,7 +184,7 @@
     (other-window 1)
     (dired fullpath)
     (other-window 1)
-    (magit-status fullpath 'switch-to-buffer)
+    (magit-status-internal fullpath 'switch-to-buffer)
     (split-window-below)
     (other-window 1)
     (shell (concat "*" folder "-shell*"))))
