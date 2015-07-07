@@ -215,10 +215,7 @@
 
 (defun my-full-magit-log(directory short-name)
   (magit-status directory)
-  (magit-key-mode-popup-logging)
-  (magit-key-mode-toggle-option 'logging "--all")
-  (magit-key-mode-toggle-option 'logging "--date-order")
-  (magit-key-mode-command 'magit-log)
+  (magit-log-all (append magit-log-arguments '("--date-order") nil))
   (rename-buffer (concat "*" short-name "-git-log*"))
   (delete-other-windows))
 
