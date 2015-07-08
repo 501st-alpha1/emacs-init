@@ -494,6 +494,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
+(global-set-key (kbd "C-c f") 'my-format-buffer)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
 (global-set-key (kbd "C-c i r c") 'my-irc-actual)
 (global-set-key (kbd "C-c s") 'hs-show-block)
