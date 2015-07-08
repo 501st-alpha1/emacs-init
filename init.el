@@ -226,6 +226,14 @@
           (delete-indentation))
         (end-of-line)))))
 
+(defun my-fix-spacing(min max)
+  (save-excursion
+    (dolist (keyword my-keyword-list t)
+      (goto-char min)
+      (while (search-forward keyword max t)
+        (when (char-equal (char-after) (aref "(" 0))
+          (insert " "))))))
+
 (defun my-format-buffer()
   (interactive)
   (untabify (point-min) (point-max))
@@ -435,6 +443,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 ;; This section is for internal use only, thus, defvar.
 (defvar my-eshell-command-count 0 "Variable to keep track of command count")
 (make-variable-buffer-local 'my-eshell-command-count)
+(defvar my-keyword-list '("if" "else" "foreach" "while" "for"))
 
 ;; This section is to allow customization, thus, defcustom.
 (defgroup weldon nil
