@@ -412,6 +412,11 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 (defun my-previous-char-is(char)
   (char-equal (char-before) (aref char 0)))
 
+(defun my-previous-non-whitespace-char-is(char)
+  (save-excursion
+    (skip-chars-backward " \t\n")
+    (char-equal (char-before) (aref char 0))))
+
 (defun my-print-elements-of-list(list)
   (while list
     (print (car list))
