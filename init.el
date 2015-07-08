@@ -224,7 +224,7 @@
           (insert " "))
         (when (my-at-indentation)
           (delete-indentation))
-        ))))
+        (end-of-line)))))
 
 (defun my-format-buffer()
   (interactive)
