@@ -209,6 +209,16 @@
       (setq current (cdr current)))
     (cdr files)))
 
+(defun my-fix-curly-braces(min max)
+  (save-excursion
+    (save-restriction
+      (goto-char min)
+      (while (search-forward "{" max t)
+        (backward-char)
+        (unless (my-previous-char-is " ")
+          (insert " "))
+        ))))
+
 (defun my-format-buffer()
   (interactive)
   (untabify (point-min) (point-max))
@@ -361,6 +371,9 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 (defun my-prev-window()
   (interactive)
   (other-window -1))
+
+(defun my-previous-char-is(char)
+  (char-equal (char-before) (aref char 0)))
 
 (defun my-print-elements-of-list(list)
   (while list
