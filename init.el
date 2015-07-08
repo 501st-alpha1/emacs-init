@@ -238,6 +238,7 @@
   (interactive)
   (untabify (point-min) (point-max))
   (my-fix-curly-braces (point-min) (point-max))
+  (my-fix-spacing (point-min) (point-max))
   (indent-region (point-min) (point-max)))
 
 (defun my-full-magit-log(directory short-name)
