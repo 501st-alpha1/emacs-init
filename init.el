@@ -464,7 +464,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 ;; This section is for internal use only, thus, defvar.
 (defvar my-eshell-command-count 0 "Variable to keep track of command count")
 (make-variable-buffer-local 'my-eshell-command-count)
-(defvar my-keyword-list '("if" "else" "foreach" "while" "for"))
+(defvar my-keyword-list '("if" "else" "foreach" "while" "for" "switch"))
 
 ;; This section is to allow customization, thus, defcustom.
 (defgroup weldon nil
