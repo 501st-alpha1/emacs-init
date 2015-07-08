@@ -177,7 +177,8 @@
 
 (defun my-at-indentation()
   (save-excursion
-    (not (= (skip-chars-backward " \t") 0))))
+    (and (not (= (skip-chars-backward " \t") 0))
+         (my-previous-char-is "\n"))))
 
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
