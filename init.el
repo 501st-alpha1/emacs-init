@@ -175,6 +175,10 @@
   (balance-windows)
   (follow-mode t))
 
+(defun my-at-indentation()
+  (save-excursion
+    (not (= (skip-chars-backward " \t") 0))))
+
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
     (persp-switch folder)
