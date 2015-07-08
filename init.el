@@ -222,6 +222,8 @@
         (backward-char)
         (unless (my-previous-char-is " ")
           (insert " "))
+        (when (my-at-indentation)
+          (delete-indentation))
         ))))
 
 (defun my-format-buffer()
