@@ -214,6 +214,25 @@
       (setq current (cdr current)))
     (cdr files)))
 
+(defun my-fix-argument-spacing(min max)
+  (save-excursion
+    (goto-char min)
+    (while (search-forward "(" max t)
+      (let ((local-min (point))
+            (local-max (search-forward ")" max t)))
+        (goto-char local-min)
+        (while (search-forward "," local-max t)
+          (unless (char-equal (char-after) (aref " " 0))
+            (insert " ")))))
+    ;; FIXME: (almost) duplicate code
+    (while (search-forward "[" max t)
+      (let ((local-min (point))
+            (local-max (search-forward "]" max t)))
+        (goto-char local-min)
+        (while (search-forward "," local-max t)
+          (unless (char-equal (char-after) (aref " " 0))
+            (insert " ")))))))
+
 (defun my-fix-curly-braces(min max)
   (save-excursion
     (save-restriction
