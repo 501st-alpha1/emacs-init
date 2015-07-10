@@ -675,6 +675,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Magit
 (add-to-list 'magit-log-arguments "--color")
+(setq magit-revert-buffers 'silent)
 
 ;; Navigation
 (ido-mode)
