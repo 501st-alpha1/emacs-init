@@ -458,6 +458,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 ;; Function to split lines longer than 80 characters by commas.
 ;; Enhancement: run again on the new line?
 (defun my-split-long-line-by-comma()
+  (interactive)
   (save-excursion
     (beginning-of-line)
     (unless (search-forward "," (line-end-position) t)
