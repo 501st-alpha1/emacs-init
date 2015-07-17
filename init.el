@@ -557,7 +557,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (scroll-bar-mode -1)
 (set-face-attribute 'auto-dim-other-buffers-face nil :background "grey7")
 
-;;(global-whitespace-mode t)
+(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
