@@ -88,6 +88,7 @@
 (require 'aggressive-indent)
 (require 'auto-complete-config)
 (require 'auto-dim-other-buffers)
+(require 'auto-formatter)
 (require 'battery)
 (require 'chess)
 (load-library "clang-format")
@@ -175,11 +176,6 @@
   (balance-windows)
   (follow-mode t))
 
-(defun my-at-indentation()
-  (save-excursion
-    (and (not (= (skip-chars-backward " \t") 0))
-         (my-previous-char-is "\n"))))
-
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
     (persp-switch folder)
@@ -213,53 +209,6 @@
         (setq exclude (delete file exclude)))
       (setq current (cdr current)))
     (cdr files)))
-
-(defun my-fix-argument-spacing(min max)
-  (save-excursion
-    (goto-char min)
-    (while (search-forward "(" max t)
-      (let ((local-min (point))
-            (local-max (search-forward ")" max t)))
-        (goto-char local-min)
-        (while (search-forward "," local-max t)
-          (unless (char-equal (char-after) (aref " " 0))
-            (insert " ")))))
-    ;; FIXME: (almost) duplicate code
-    (while (search-forward "[" max t)
-      (let ((local-min (point))
-            (local-max (search-forward "]" max t)))
-        (goto-char local-min)
-        (while (search-forward "," local-max t)
-          (unless (char-equal (char-after) (aref " " 0))
-            (insert " ")))))))
-
-(defun my-fix-curly-braces(min max)
-  (save-excursion
-    (save-restriction
-      (goto-char min)
-      (while (search-forward "{" max t)
-        (backward-char)
-        (unless (my-previous-char-is " ")
-          (insert " "))
-        (when (my-at-indentation)
-          (delete-indentation))
-        (end-of-line)))))
-
-(defun my-fix-spacing(min max)
-  (save-excursion
-    (dolist (keyword my-keyword-list t)
-      (goto-char min)
-      (while (search-forward keyword max t)
-        (when (char-equal (char-after) (aref "(" 0))
-          (insert " "))))))
-
-(defun my-format-buffer()
-  (interactive)
-  (untabify (point-min) (point-max))
-  (my-fix-curly-braces (point-min) (point-max))
-  (my-fix-spacing (point-min) (point-max))
-  (my-fix-argument-spacing (point-min) (point-max))
-  (indent-region (point-min) (point-max)))
 
 (defun my-full-magit-log(directory short-name)
   (magit-status directory)
@@ -409,14 +358,6 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
   (interactive)
   (other-window -1))
 
-(defun my-previous-char-is(char)
-  (char-equal (char-before) (aref char 0)))
-
-(defun my-previous-non-whitespace-char-is(char)
-  (save-excursion
-    (skip-chars-backward " \t\n")
-    (char-equal (char-before) (aref char 0))))
-
 (defun my-print-elements-of-list(list)
   (while list
     (print (car list))
@@ -455,21 +396,6 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
   (interactive)
   (my-smooth-scroll nil))
 
-;; Function to split lines longer than 80 characters by commas.
-;; Enhancement: run again on the new line?
-(defun my-split-long-line-by-comma()
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (unless (search-forward "," (line-end-position) t)
-      (user-error "There are no commas on this line"))
-    (if (< (- (point) (line-beginning-position)) 80)
-        (progn
-          (insert "\n")
-          (indent-for-tab-command))
-      (user-error (concat "The comma is past the line limit, so splitting "
-                          "wouldn't help.")))))
-
 (defun my-tomorrow-day ()
   "Returns the day of the week for tomorrow."
   (let ((day (1+ (string-to-number (format-time-string "%w")))))
@@ -484,7 +410,6 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
 ;; This section is for internal use only, thus, defvar.
 (defvar my-eshell-command-count 0 "Variable to keep track of command count")
 (make-variable-buffer-local 'my-eshell-command-count)
-(defvar my-keyword-list '("if" "else" "foreach" "while" "for" "switch"))
 
 ;; This section is to allow customization, thus, defcustom.
 (defgroup weldon nil
@@ -534,7 +459,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'bury-buffer)
 (global-set-key (kbd "C-c e") 'eval-region)
-(global-set-key (kbd "C-c f") 'my-format-buffer)
+(global-set-key (kbd "C-c f") 'auto-formatter-format-buffer)
 (global-set-key (kbd "C-c r t m") 'simple-rtm-mode)
 (global-set-key (kbd "C-c i r c") 'my-irc-actual)
 (global-set-key (kbd "C-c s") 'hs-show-block)
