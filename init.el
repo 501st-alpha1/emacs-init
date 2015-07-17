@@ -464,7 +464,9 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
     (unless (search-forward "," (line-end-position) t)
       (user-error "There are no commas on this line"))
     (if (< (- (point) (line-beginning-position)) 80)
-        (insert "\n")
+        (progn
+          (insert "\n")
+          (indent-for-tab-command))
       (user-error (concat "The comma is past the line limit, so splitting "
                           "wouldn't help.")))))
 
