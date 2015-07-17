@@ -455,6 +455,18 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
   (interactive)
   (my-smooth-scroll nil))
 
+;; Function to split lines longer than 80 characters by commas.
+;; Enhancement: run again on the new line?
+(defun my-split-long-line-by-comma()
+  (save-excursion
+    (beginning-of-line)
+    (unless (search-forward "," (line-end-position) t)
+      (user-error "There are no commas on this line"))
+    (if (< (- (point) (line-beginning-position)) 80)
+        (insert "\n")
+      (user-error (concat "The comma is past the line limit, so splitting "
+                          "wouldn't help.")))))
+
 (defun my-tomorrow-day ()
   "Returns the day of the week for tomorrow."
   (let ((day (1+ (string-to-number (format-time-string "%w")))))
