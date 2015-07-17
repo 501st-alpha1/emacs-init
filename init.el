@@ -558,7 +558,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (set-face-attribute 'auto-dim-other-buffers-face nil :background "grey7")
 
 ;;(global-whitespace-mode t)
-(setq whitespace-style '(face tabs trailing lines space-before-tab
+(setq whitespace-style '(face tabs trailing lines-tail space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
 (global-visual-line-mode t)
