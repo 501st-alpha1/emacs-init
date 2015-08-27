@@ -498,7 +498,6 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (scroll-bar-mode -1)
 (set-face-attribute 'auto-dim-other-buffers-face nil :background "grey7")
 
-(global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
                               newline indentation empty space-after-tab
                               tab-mark))
@@ -825,6 +824,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                   ;;web-mode-enable-whitespaces t
                   ;;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
                   web-mode-display-table nil)
+            (whitespace-mode t)
             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;----------------------------------------------------------------------------;;
