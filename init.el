@@ -95,6 +95,7 @@
 (require 'csharp-mode) ;; TODO find git repo
 (require 'csv-mode) ;; TODO find git repo
 (require 'doc-present)
+(require 'dockerfile-mode)
 (require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
@@ -709,6 +710,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;;----------------------------------------------------------------------------;;
 ;;                             Auto-Mode-Alist                                ;;
 ;;----------------------------------------------------------------------------;;
+
+;; Docker
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 ;; EditorConfig
 (add-to-list 'auto-mode-alist '("\\.editorconfig$" . conf-unix-mode))
