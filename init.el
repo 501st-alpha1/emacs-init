@@ -212,8 +212,8 @@
     (cdr files)))
 
 (defun my-full-magit-log(directory short-name)
-  (magit-status directory)
   (persp-switch short-name)
+  (magit-status directory)
   (magit-log-all (append magit-log-arguments '("--date-order") nil))
   (rename-buffer (concat "*" short-name "-git-log*"))
   (delete-other-windows))
