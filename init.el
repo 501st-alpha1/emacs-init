@@ -507,7 +507,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (column-number-mode 1)
 (display-time-mode 1)
 (setq battery-mode-line-format " [%b%p%%] ")
-(global-aggressive-indent-mode)
+;;(global-aggressive-indent-mode)
 (auto-dim-other-buffers-mode)
 (setq ring-bell-function #'ignore)
 (global-git-gutter-mode)
