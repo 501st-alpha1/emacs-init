@@ -829,6 +829,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                   ;;web-mode-whitespaces-regexp "(^[\t]+)|([\t ]+$)"
                   web-mode-display-table nil)
             (whitespace-mode t)
+            (hs-minor-mode t)
             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;----------------------------------------------------------------------------;;
