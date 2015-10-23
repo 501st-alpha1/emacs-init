@@ -606,7 +606,6 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq erc-kill-server-buffer-on-quit t
       erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477")
-      erc-log-channels-directory "~/.erc/logs/"
       erc-log-insert-log-on-open nil
       erc-log-channels t
       erc-server-reconnect-timeout 30
