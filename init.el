@@ -141,7 +141,7 @@
 (require 'org-checklist) ;; TODO find git repo
 (require 'org-expiry)
 (require 'org-feed)
-(require 'org-magit)
+(require 'orgit)
 (require 'os) ;; org-sync
 (load-library "os-github")
 (require 'org-trello)
