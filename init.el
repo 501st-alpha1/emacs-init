@@ -593,6 +593,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq-default fill-column 70)
 (setq ruby-indent-size 2)
 (setq python-indent-offset 2)
+(editorconfig-mode 1)
 
 ;; Doc View
 (setq doc-view-resolution 300)
