@@ -135,7 +135,6 @@
 (require 'magit-gitflow)
 (require 'markdown-mode)
 (require 'mew)
-(require 'mk-project)
 (require 'notify) ;; TODO find git repo
 (require 'org)
 (require 'org-checklist) ;; TODO find git repo
