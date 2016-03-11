@@ -804,6 +804,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; Git
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
+;; JavaScript
+(add-hook 'js-mode-hook 'hs-minor-mode)
+
 ;; Markdown
 (add-hook 'markdown-mode-hook (lambda ()
                                 (flyspell-mode 1)))
