@@ -465,6 +465,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
 (global-set-key (kbd "C-c H") 'hs-hide-all)
+(global-set-key (kbd "C-c r") 'replace-string)
 
 ;; Scrolling
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
