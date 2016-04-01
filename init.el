@@ -740,6 +740,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 ;;----------------------------------------------------------------------------;;
 ;;                              Mode Hooks                                    ;;
