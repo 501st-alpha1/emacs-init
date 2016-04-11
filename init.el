@@ -312,6 +312,23 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
           next-headline
         nil))))
 
+(defun my-org-agenda-skip-tags(tags &optional others)
+  "Skip all entries that correspond to any elements of TAGS.
+
+If OTHERS is true, skip all entries that do not correspond to any elements of TAGS."
+  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+        (current-headline (or (and (org-at-heading-p)
+                                   (point))
+                              (save-excursion (org-back-to-heading)))))
+    (dolist (tag tags)
+      (if others
+          (if (not (member tag (org-get-tags-at current-headline)))
+              next-headline
+            nil)
+        (if (member tag (org-get-tags-at current-headline))
+            next-headline
+          nil)))))
+
 (defun my-org-any-subheading-has-state(state)
   "Check if any subentries of the current heading have the given state."
   (save-excursion
