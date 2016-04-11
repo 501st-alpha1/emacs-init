@@ -832,6 +832,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                   web-mode-display-table nil)
             (whitespace-mode t)
             (hs-minor-mode t)
+            (show-paren-mode t)
             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;----------------------------------------------------------------------------;;
