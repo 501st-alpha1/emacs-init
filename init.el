@@ -478,6 +478,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-c e") 'eval-region)
 (global-set-key (kbd "C-c f") 'auto-formatter-format-buffer)
 (global-set-key (kbd "C-c i r c") 'my-irc-actual)
+(global-set-key (kbd "C-c o") 'ace-window)
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c S") 'hs-show-all)
@@ -590,6 +591,10 @@ To modify this variable, you can use the customize interface, or do e.g.:
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
+
+;; Ace Window
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(set-face-attribute 'aw-leading-char-face nil :foreground "red" :weight 'normal :height 3.0)
 
 ;; Auto-complete
 (add-to-list 'ac-dictionary-directories
