@@ -779,6 +779,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
             (c-set-offset 'case-label '2)
             (hs-minor-mode)))
 
+;; C-Sharp
+(add-hook 'csharp-mode-hook (lambda() (hs-minor-mode 1)))
+
 ;; Syntax highlighting for diffs
 (add-hook 'diff-mode-hook
           (lambda()
