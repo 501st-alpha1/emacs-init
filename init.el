@@ -140,6 +140,7 @@
 (require 'org-checklist) ;; TODO find git repo
 (require 'org-expiry)
 (require 'org-feed)
+(require 'org-habit)
 (require 'orgit)
 (require 'os) ;; org-sync
 (load-library "os-github")
