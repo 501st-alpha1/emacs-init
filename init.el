@@ -863,6 +863,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
             (show-paren-mode t)
             (local-set-key (kbd "RET") 'newline-and-indent)))
 
+;; XML
+(setq nxml-slash-auto-complete-flag t)
+
 ;;----------------------------------------------------------------------------;;
 ;;                                   Advice                                   ;;
 ;;----------------------------------------------------------------------------;;
