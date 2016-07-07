@@ -153,6 +153,7 @@
 (require 'python)
 (require 'ruby-electric)
 (require 'soundcloud)
+(require 'ssh-agency)
 (require 'tls)
 (require 'twittering-mode)
 (require 'uniquify)
