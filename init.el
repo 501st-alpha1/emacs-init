@@ -93,8 +93,8 @@
 (require 'chess)
 (load-library "clang-format")
 (require 'company)
-(require 'csharp-mode) ;; TODO find git repo
-(require 'csv-mode) ;; TODO find git repo
+(require 'csharp-mode)
+(require 'csv-mode)
 (require 'doc-present)
 (require 'dockerfile-mode)
 (require 'deft)
