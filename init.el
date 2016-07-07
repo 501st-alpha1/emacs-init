@@ -86,12 +86,13 @@
 (require 'ace-jump-mode)
 (require 'ace-window)
 (require 'aggressive-indent)
-(require 'auto-complete-config)
+;;(require 'auto-complete-config)
 (require 'auto-dim-other-buffers)
 (require 'auto-formatter)
 (require 'battery)
 (require 'chess)
 (load-library "clang-format")
+(require 'company)
 (require 'csharp-mode) ;; TODO find git repo
 (require 'csv-mode) ;; TODO find git repo
 (require 'doc-present)
@@ -599,10 +600,14 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (set-face-attribute 'aw-leading-char-face nil :foreground "red" :weight 'normal :height 3.0)
 
 ;; Auto-complete
-(add-to-list 'ac-dictionary-directories
-             (concat my-external-library-location "/auto-complete/dict"))
-(ac-config-default)
-(setq ac-ignore-case nil)
+(global-company-mode)
+(add-to-list 'company-backends 'company-omnisharp)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 0)
+;;(add-to-list 'ac-dictionary-directories
+;;             (concat my-external-library-location "/auto-complete/dict"))
+;;(ac-config-default)
+;;(setq ac-ignore-case nil)
 
 ;; Code Formatting
 (setq-default indent-tabs-mode nil)
@@ -785,7 +790,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; C-Sharp
 (add-hook 'csharp-mode-hook
           (lambda()
-            (auto-complete-mode 1)
+            ;;(auto-complete-mode 1)
             (omnisharp-mode 1)
             (hs-minor-mode 1)))
 
