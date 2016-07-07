@@ -136,6 +136,7 @@
 (require 'markdown-mode)
 (require 'mew)
 (require 'notify) ;; TODO find git repo
+(require 'omnisharp)
 (require 'org)
 (require 'org-checklist) ;; TODO find git repo
 (require 'org-expiry)
@@ -785,6 +786,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (add-hook 'csharp-mode-hook
           (lambda()
             (auto-complete-mode 1)
+            (omnisharp-mode 1)
             (hs-minor-mode 1)))
 
 ;; Syntax highlighting for diffs
