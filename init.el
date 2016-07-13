@@ -656,6 +656,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                            "*Messages*" "Async Shell Command"))
 (flx-ido-mode 1)
 (setq magit-completing-read-function 'magit-ido-completing-read)
+(setq persp-interactive-completion-function 'ido-completing-read)
 
 ;; Org Mode
 (setq org-use-fast-todo-selection t
