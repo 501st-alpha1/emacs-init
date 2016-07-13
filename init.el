@@ -667,6 +667,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-log-into-drawer t
       org-extend-today-until 4
       org-expiry-inactive-timestamps t
+      org-clock-persist t
       org-expiry-created-property-name "CREATED"
       org-todo-keyword-faces '(("WAITING" . "yellow")
                                ("DEFERRED" . "purple"))
@@ -675,6 +676,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                     "CANCELLED(c)"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
+(org-clock-persistence-insinuate)
 
 ;; Projectil
 (setq projectile-enable-caching t)
