@@ -324,14 +324,15 @@ If OTHERS is true, skip all entries that do not correspond to any elements of TA
         (current-headline (or (and (org-at-heading-p)
                                    (point))
                               (save-excursion (org-back-to-heading)))))
-    (dolist (tag tags)
-      (if others
-          (if (not (member tag (org-get-tags-at current-headline)))
-              next-headline
-            nil)
-        (if (member tag (org-get-tags-at current-headline))
-            next-headline
-          nil)))))
+    (catch 'skip-please
+      (dolist (tag tags)
+        (if others
+            (if (not (member tag (org-get-tags-at current-headline)))
+                (throw 'skip-please next-headline)
+              nil)
+          (if (member tag (org-get-tags-at current-headline))
+              (throw 'skip-please next-headline)
+            nil))))))
 
 (defun my-org-any-subheading-has-state(state)
   "Check if any subentries of the current heading have the given state."
