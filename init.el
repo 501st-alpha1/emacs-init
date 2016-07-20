@@ -316,6 +316,8 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
           next-headline
         nil))))
 
+;; FIXME: This doesn't seem to work for tags on a sub-task when parent task is
+;; folded. Expanding the parent task fixes the issue.
 (defun my-org-agenda-skip-tags(tags &optional others)
   "Skip all entries that correspond to any elements of TAGS.
 
