@@ -193,6 +193,11 @@
     (other-window 1)
     (shell (concat "*" folder "-shell*"))))
 
+(defun my-dev-full-layout(path folder)
+  (let ((fullpath (concat path "/" folder)))
+    (my-dev-layout path folder)
+    (my-full-magit-log fullpath (concat folder "-log"))))
+
 (defun my-directory-files (directory &optional full match nosort)
   "Like `directory-files', but excluding \".\" and \"..\"."
   (let* ((files (cons nil (directory-files directory full match nosort)))
