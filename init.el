@@ -194,6 +194,7 @@
     (shell (concat "*" folder "-shell*"))))
 
 (defun my-dev-full-layout(directory)
+  (interactive "sEnter a directory: ")
   (let* ((parsed-dir (split-string directory "/"))
          (folder (car (last parsed-dir)))
          (path (string-join (nbutlast parsed-dir) "/")))
