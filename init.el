@@ -307,6 +307,19 @@
             (kill-buffer buffer)))
         (buffer-list)))
 
+(defun my-ledger-layout(fullpath)
+  (let* ((parsed-dir (split-string fullpath "/"))
+         (file (car (last parsed-dir)))
+         (folder (car (last parsed-dir 2)))
+         (path (string-join (nbutlast parsed-dir) "/")))
+    (persp-switch folder)
+    (find-file fullpath)
+    (ledger-mode)
+    (split-window-horizontally)
+    ;; TODO: Resize windows?
+    (other-window 1)
+    (shell (concat "*" folder "-shell*"))))
+
 (defun my-org-agenda-skip-tag(tag &optional others)
   "Skip all entries that correspond to TAG.
 
