@@ -671,6 +671,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; Org Mode
 (setq org-use-fast-todo-selection t
       org-deadline-warning-days 7
+      org-agenda-sticky t
       org-agenda-start-on-weekday nil
       org-agenda-skip-deadline-prewarning-if-scheduled t
       org-agenda-sorting-strategy '((agenda time-up priority-down tag-up))
