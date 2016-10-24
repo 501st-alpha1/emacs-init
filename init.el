@@ -512,6 +512,12 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-c H") 'hs-hide-all)
 (global-set-key (kbd "C-c r") 'replace-string)
 
+;; C-c v: OmniSharp
+(global-set-key (kbd "C-c v a") 'omnisharp-add-to-solution-current-file)
+(global-set-key (kbd "C-c v u") 'omnisharp-fix-usings)
+(global-set-key (kbd "C-c v d") 'omnisharp-go-to-definition)
+(global-set-key (kbd "C-c v r") 'omnisharp-run-code-action-refactoring)
+
 ;; Scrolling
 (global-set-key (kbd "<prior>") 'my-smooth-scroll-up)
 (global-set-key (kbd "<next>") 'my-smooth-scroll-down)
