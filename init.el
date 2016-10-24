@@ -633,6 +633,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-company-mode)
 (add-to-list 'company-backends 'company-omnisharp)
 (setq company-idle-delay 0
+      company-selection-wrap-around t
       company-minimum-prefix-length 1)
 ;;(add-to-list 'ac-dictionary-directories
 ;;             (concat my-external-library-location "/auto-complete/dict"))
