@@ -632,8 +632,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; Auto-complete
 (global-company-mode)
 (add-to-list 'company-backends 'company-omnisharp)
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0
+      company-minimum-prefix-length 1)
 ;;(add-to-list 'ac-dictionary-directories
 ;;             (concat my-external-library-location "/auto-complete/dict"))
 ;;(ac-config-default)
