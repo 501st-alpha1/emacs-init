@@ -690,7 +690,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 
 ;; Org Mode
 (setq org-use-fast-todo-selection t
-      org-deadline-warning-days 7
+      org-deadline-warning-days 5
       org-agenda-log-mode-items '(closed)
       org-agenda-sticky t
       org-agenda-start-on-weekday nil
