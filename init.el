@@ -320,6 +320,33 @@
     (other-window 1)
     (shell (concat "*" folder "-shell*"))))
 
+(defun my-org-agenda-skip-multi(list)
+  "Call multiple functions for org-agenda-skip
+
+If a function in LIST returns nil, then continue on to the next function. Otherwise, return that value. Per the usage of org-agenda-skip-function, this means that any function in LIST should return nil if the current headline should not be skipped, and otherwise should return a point where the search should continue (usually `next-headline`).
+
+Since this aborts early, try to place fast-running functions near the beginning!
+
+Example:
+
+(org-agenda-skip-function
+ '(my-org-agenda-skip-multi
+   '((my-org-agenda-skip-tags '(\"HOME\"))
+     (org-agenda-skip-entry-if 'todo \"WAITING\"))))
+
+This will skip all tasks with the tag HOME, and also all tasks with the status of WAITING."
+  (message "my org agenda skip multi called")
+  (catch 'skip-please
+    (dolist (element list)
+      (let* ((function (car element))
+             (arguments (car (cdr element))))
+        (message "function is %s" function)
+        (message "arguments is %s" arguments)
+        (let ((ret (apply function arguments)))
+        (when ret
+          (message "skipping headline at %s" ret)
+          (throw 'skip-please ret)))))))
+
 (defun my-org-agenda-skip-tag(tag &optional others)
   "Skip all entries that correspond to TAG.
 
