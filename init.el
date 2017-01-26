@@ -782,6 +782,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 ;; EditorConfig
 (add-to-list 'auto-mode-alist '("\\.editorconfig$" . conf-unix-mode))
 
+;; Ledger
+(add-to-list 'auto-mode-alist '("\\.dat\\'" . ledger-mode))
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
