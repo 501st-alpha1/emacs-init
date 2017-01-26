@@ -338,8 +338,9 @@ This will skip all tasks with the tag HOME, and also all tasks with the status o
   (message "my org agenda skip multi called")
   (catch 'skip-please
     (dolist (element list)
-      (let* ((function (car element))
-             (arguments (car (cdr element))))
+      (let* ((unquoted (car (cdr element)))
+             (function (car unquoted))
+             (arguments (cdr (car (cdr unquoted)))))
         (message "function is %s" function)
         (message "arguments is %s" arguments)
         (let ((ret (apply function arguments)))
