@@ -132,6 +132,7 @@
 (require 'less-css-mode)
 (require 'lorem-ipsum)
 (require 'magit)
+(require 'magit-annex)
 (require 'magit-blame)
 (require 'magit-gitflow)
 (require 'markdown-mode)
