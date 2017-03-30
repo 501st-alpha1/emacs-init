@@ -735,7 +735,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                ("DEFERRED" . "purple"))
       org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)"
                                     "APPT(a)" "DEFERRED(f)" "|" "DONE(d)"
-                                    "CANCELLED(c)"))
+                                    "CANCELLED(c)" "UNREQUIRED(u)"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
 (org-clock-persistence-insinuate)
