@@ -150,6 +150,8 @@
 (require 'org-trello)
 (require 'perspective)
 (require 'persp-projectile)
+(require 'pocket-api)
+(require 'pocket-mode)
 (require 'projectile)
 (require 'python)
 (require 'ruby-electric)
@@ -523,6 +525,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-x O") 'my-prev-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; C-x p: Pocket
+(global-set-key (kbd "C-x p a") 'pocket-api-add)
+
 ;; Prefix of C-c
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -734,6 +739,9 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
 (org-clock-persistence-insinuate)
+
+;; Pocket
+(pocket-api-load-auth)
 
 ;; Projectil
 (setq projectile-enable-caching t)
