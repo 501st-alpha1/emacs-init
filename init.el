@@ -53,7 +53,7 @@
 ;; (load-file "/path/to/this/file")                                           ;;
 ;;                                                                            ;;
 ;; Or, more simply:                                                           ;;
-;; (load-file (concat my-external-library-location "/emacs/init.el"))         ;;
+;; (load-file (concat my-external-library-location "/emacs-init/init.el"))    ;;
 ;;----------------------------------------------------------------------------;;
 
 ;; Log beginning and end of loading, to help with troubleshooting.
