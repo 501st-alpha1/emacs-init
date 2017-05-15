@@ -895,6 +895,8 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                      ;;   (shell-resync-dirs))
                                      (message "Switched to new directory")))
 
+(setq dired-dwim-target t)
+
 ;; Lisp mode
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
