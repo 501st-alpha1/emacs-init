@@ -182,6 +182,18 @@
   (balance-windows)
   (follow-mode t))
 
+(defun my-compose-words()
+  "Count the number of words in the closest :COMPOSE: org-mode drawer."
+  (interactive)
+  (save-excursion
+    (search-backward ":COMPOSE:")
+    (beginning-of-line)
+    (next-line)
+    (let ((beg (point)))
+      (search-forward ":END:")
+      (beginning-of-line)
+      (message "Your message has %s words." (count-words beg (point))))))
+
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
     (persp-switch folder)
