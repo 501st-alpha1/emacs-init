@@ -739,6 +739,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-agenda-skip-deadline-prewarning-if-scheduled t
       org-agenda-sorting-strategy '((agenda time-up priority-down tag-up))
       org-log-into-drawer t
+      org-log-done 'time
       org-extend-today-until 4
       org-expiry-inactive-timestamps t
       org-clock-persist t
