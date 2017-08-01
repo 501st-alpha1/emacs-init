@@ -147,6 +147,7 @@
 (require 'orgit)
 (require 'os) ;; org-sync
 (load-library "os-github")
+(require 'org-super-agenda)
 (require 'org-trello)
 (require 'perspective)
 (require 'persp-projectile)
@@ -753,6 +754,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
 (org-clock-persistence-insinuate)
+(org-super-agenda-mode 1)
 
 ;; Pocket
 (pocket-api-load-auth)
