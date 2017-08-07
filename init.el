@@ -590,6 +590,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-face-attribute 'auto-dim-other-buffers-face nil :background "grey7")
+(set-face-attribute 'highlight nil :background "grey10")
 
 (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
                               newline indentation empty space-after-tab
