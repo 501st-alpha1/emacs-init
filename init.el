@@ -432,7 +432,13 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
                   (if effort-prop effort-prop 0)))
          (actual (org-clock-sum-current-item))
          (velocity (/ effort actual)))
-    (org-entry-put current-headline "Velocity" (number-to-string velocity))))
+    (cond ((= actual 0)
+           (message "No time clocked, skipping velocity calculation."))
+          ((= effort 0)
+           (message "No time estimate, skipping velocity calculation."))
+          (t
+           (org-entry-put current-headline "Velocity"
+                          (number-to-string velocity))))))
 
 ;; TODO: make this more customizable
 (defun my-org-summary-todo ()
