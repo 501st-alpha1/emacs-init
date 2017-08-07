@@ -421,6 +421,18 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (when value
           (throw 'break t))))))
 
+;; https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/
+(defun my-org-calc-velocity()
+  "Compare the estimated Effort for the current task to the time clocked, calculate the Velocity (effort / actual), and save that value to `Velocity` property."
+  (let* ((current-headline (or (and (org-at-heading-p)
+                                    (point))
+                               (save-excursion (org-back-to-heading))))
+         (effort (org-duration-string-to-minutes
+                  (org-entry-get current-headline "Effort")))
+         (actual (org-clock-sum-current-item))
+         (velocity (/ effort actual)))
+    (org-entry-put current-headline "Velocity" (number-to-string velocity))))
+
 ;; TODO: make this more customizable
 (defun my-org-summary-todo ()
   "Switch entry to DONE when all subentries are done."
