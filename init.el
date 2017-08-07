@@ -422,6 +422,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
           (throw 'break t))))))
 
 ;; FIXME: Split into multiple functions (one to calc, one to print).
+;; FIXME: Broken when all headings are not expanded.
 ;; TODO: Track date, weight values by most recent.
 (defun my-org-get-all-velocities-in-file()
   (interactive)
