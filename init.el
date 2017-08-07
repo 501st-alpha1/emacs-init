@@ -427,8 +427,9 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
   (let* ((current-headline (or (and (org-at-heading-p)
                                     (point))
                                (save-excursion (org-back-to-heading))))
+         (effort-prop (org-entry-get current-headline "Effort"))
          (effort (org-duration-string-to-minutes
-                  (org-entry-get current-headline "Effort")))
+                  (if effort-prop effort-prop 0)))
          (actual (org-clock-sum-current-item))
          (velocity (/ effort actual)))
     (org-entry-put current-headline "Velocity" (number-to-string velocity))))
