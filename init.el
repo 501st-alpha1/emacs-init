@@ -421,21 +421,24 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (when value
           (throw 'break t))))))
 
-;; FIXME: Split into multiple functions (one to calc, one to print).
 ;; FIXME: Broken when all headings are not expanded.
 ;; TODO: Track date, weight values by most recent.
 (defun my-org-get-all-velocities-in-file()
-  (interactive)
   (save-excursion
     (goto-char (point-min))
     (let ((velocities '()))
       (while (search-forward ":Velocity:" nil t)
         (let ((current-headline (save-excursion (org-back-to-heading))))
           (add-to-list 'velocities (string-to-number (org-entry-get current-headline "Velocity")))))
-      (let ((average (/ (reduce '+ velocities) (length velocities)))
-            (min (reduce 'min velocities))
-            (max (reduce 'max velocities)))
-        (message "Average velocity is: %s\nMin velocity is: %s\nMax velocity is: %s\nVelocities are: %s" average min max velocities)))))
+      velocities)))
+
+(defun my-org-print-file-velocity-info()
+  (interactive)
+  (let* ((velocities (my-org-get-all-velocities-in-file))
+         (average (/ (reduce '+ velocities) (length velocities)))
+         (min (reduce 'min velocities))
+         (max (reduce 'max velocities)))
+    (message "Average velocity is: %s\nMin velocity is: %s\nMax velocity is: %s\nVelocities are: %s" average min max velocities)))
 
 ;; https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/
 (defun my-org-calc-velocity()
