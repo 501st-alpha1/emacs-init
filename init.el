@@ -440,6 +440,14 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
            (org-entry-put current-headline "Velocity"
                           (number-to-string velocity))))))
 
+(defun my-org-calc-velocity-when-done()
+  "Calculate velocity using `my-org-calc-velocity` for the current task if the state has just changed to DONE or equivalent."
+  (when (catch 'break
+          (dolist (element org-done-keywords)
+            (when (string= (nth 2 (org-heading-components)) element)
+              (throw 'break t))))
+    (my-org-calc-velocity)))
+
 ;; TODO: make this more customizable
 (defun my-org-summary-todo ()
   "Switch entry to DONE when all subentries are done."
@@ -773,6 +781,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                     "CANCELLED(c)" "UNREQUIRED(u)"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
+(add-hook 'org-after-todo-state-change-hook 'my-org-calc-velocity-when-done)
 (org-clock-persistence-insinuate)
 (org-super-agenda-mode 1)
 
