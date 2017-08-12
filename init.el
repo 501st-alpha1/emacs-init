@@ -609,6 +609,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (global-set-key (kbd "C-x k") 'my-kill-buffer)
 (global-set-key (kbd "C-x K") 'my-kill-buffer-and-jump)
 (global-set-key (kbd "C-x O") 'my-prev-window)
+(global-set-key (kbd "C-x c") 'magit-clone)
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; C-x p: Pocket
