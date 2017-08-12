@@ -440,6 +440,33 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
          (max (reduce 'max velocities)))
     (message "Average velocity is: %s\nMin velocity is: %s\nMax velocity is: %s\nVelocities are: %s" average min max velocities)))
 
+(defun my-org-calc-estimate-odds(num)
+  (interactive "nEnter time estimate (minutes): ")
+  (let* ((velocities (my-org-get-all-velocities-in-file))
+         (len (length velocities))
+         (RANDOM-TIMES 200)
+         (pct-per-time (/ 100.0 RANDOM-TIMES))
+         (estimates '()))
+    (dotimes (i RANDOM-TIMES)
+      (push (round (/ num (nth (random len) velocities))) estimates))
+    (setq estimates (sort estimates '<))
+    (setq brackets '(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil
+                         nil nil nil nil nil nil nil nil nil nil nil nil nil nil
+                         nil nil nil nil nil nil nil nil nil nil nil))
+    (dolist (element estimates)
+      (setq bracket (floor (/ element 60)))
+      (setq old-val (nth bracket brackets))
+      (unless old-val
+        (setq old-val 0))
+      (setf (nth bracket brackets) (+ old-val pct-per-time)))
+    (setq full-brackets '())
+    (setq sum 0)
+    (dolist (element brackets)
+      (setq sum (+ sum (if element element 0)))
+      (push sum full-brackets))
+    (setq full-brackets (reverse full-brackets))
+    (message "Percentages for each bracket are: %s\nFull percentages for each bracket are: %s\nEstimated velocities: %s\nLength of each list: %s, %s, %s" brackets full-brackets estimates (length brackets) (length full-brackets) (length estimates))))
+
 ;; https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/
 (defun my-org-calc-velocity()
   "Compare the estimated Effort for the current task to the time clocked, calculate the Velocity (effort / actual), and save that value to `Velocity` property."
