@@ -324,10 +324,11 @@
             (kill-buffer buffer)))
         (buffer-list)))
 
-(defun my-ledger-layout(fullpath)
+(defun my-ledger-layout(fullpath &optional name)
   (let* ((parsed-dir (split-string fullpath "/"))
          (file (car (last parsed-dir)))
-         (folder (car (last parsed-dir 2)))
+         (folder-name (car (last parsed-dir 2)))
+         (folder (or name folder-name))
          (path (string-join (nbutlast parsed-dir) "/")))
     (persp-switch folder)
     (find-file fullpath)
