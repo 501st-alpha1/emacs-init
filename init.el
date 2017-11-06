@@ -507,7 +507,7 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
                             org-not-done-keywords))
                       "DONE"
                     (if (not (my-org-any-subheading-has-any-state
-                              org-done-keywords))
+                              (remove "CANCELLED" org-done-keywords)))
                         (if (my-org-any-subheading-has-state "STARTED")
                             "STARTED"
                           "TODO")
