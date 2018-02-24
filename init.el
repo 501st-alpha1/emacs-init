@@ -324,6 +324,20 @@
             (kill-buffer buffer)))
         (buffer-list)))
 
+(defun my-ledger-right-align-line(left right &optional chars)
+  "Generate a posting line for a Ledger transaction, consisting of account and
+value, with latter right-aligned to desired column (default 80)."
+  (unless chars
+    (setq chars 80))
+  ;; Ledger minimum 2 spaces between account & value.
+  (setq left (concat left "  "))
+  (let* ((total (+ (length left) (length right)))
+         (spaces (if (< total chars) (- chars total) 0))
+         (builder left))
+    (dotimes (i spaces)
+      (setq builder (concat builder " ")))
+    (concat builder right)))
+
 (defun my-ledger-layout(fullpath &optional name)
   (let* ((parsed-dir (split-string fullpath "/"))
          (file (car (last parsed-dir)))
