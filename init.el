@@ -333,6 +333,7 @@
     (persp-switch folder)
     (find-file fullpath)
     (ledger-mode)
+    (end-of-buffer)
     (split-window-horizontally)
     ;; TODO: Resize windows?
     (other-window 1)
