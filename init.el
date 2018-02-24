@@ -825,10 +825,12 @@ To modify this variable, you can use the customize interface, or do e.g.:
       org-clock-persist t
       org-expiry-created-property-name "CREATED"
       org-todo-keyword-faces '(("WAITING" . "yellow")
+                               ("PARTIAL" . "yellow")
                                ("DEFERRED" . "purple"))
       org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)"
                                     "APPT(a)" "DEFERRED(f)" "|" "DONE(d)"
-                                    "CANCELLED(c)" "UNREQUIRED(u)"))
+                                    "CANCELLED(c)" "UNREQUIRED(u)"
+                                    "PARTIAL(p)"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
 (add-hook 'org-after-todo-state-change-hook 'my-org-calc-velocity-when-done)
