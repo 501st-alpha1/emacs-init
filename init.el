@@ -141,6 +141,7 @@
 ;;(require 'omnisharp)
 (require 'org)
 (require 'org-checklist) ;; TODO find git repo
+(require 'org-ebs)
 (require 'org-expiry)
 (require 'org-feed)
 (require 'org-habit)
@@ -437,79 +438,6 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (setq value (my-org-any-subheading-has-state element))
         (when value
           (throw 'break t))))))
-
-;; FIXME: Broken when all headings are not expanded.
-;; TODO: Track date, weight values by most recent.
-(defun my-org-get-all-velocities-in-file()
-  (save-excursion
-    (goto-char (point-min))
-    (let ((velocities '()))
-      (while (search-forward ":Velocity:" nil t)
-        (let ((current-headline (save-excursion (org-back-to-heading))))
-          (add-to-list 'velocities (string-to-number (org-entry-get current-headline "Velocity")))))
-      velocities)))
-
-(defun my-org-print-file-velocity-info()
-  (interactive)
-  (let* ((velocities (my-org-get-all-velocities-in-file))
-         (average (/ (reduce '+ velocities) (length velocities)))
-         (min (reduce 'min velocities))
-         (max (reduce 'max velocities)))
-    (message "Average velocity is: %s\nMin velocity is: %s\nMax velocity is: %s\nVelocities are: %s" average min max velocities)))
-
-(defun my-org-calc-estimate-odds(num)
-  (interactive "nEnter time estimate (minutes): ")
-  (let* ((velocities (my-org-get-all-velocities-in-file))
-         (len (length velocities))
-         (RANDOM-TIMES 200)
-         (pct-per-time (/ 100.0 RANDOM-TIMES))
-         (estimates '()))
-    (dotimes (i RANDOM-TIMES)
-      (push (round (/ num (nth (random len) velocities))) estimates))
-    (setq estimates (sort estimates '<))
-    (setq brackets '(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil
-                         nil nil nil nil nil nil nil nil nil nil nil nil nil nil
-                         nil nil nil nil nil nil nil nil nil nil nil))
-    (dolist (element estimates)
-      (setq bracket (floor (/ element 60)))
-      (setq old-val (nth bracket brackets))
-      (unless old-val
-        (setq old-val 0))
-      (setf (nth bracket brackets) (+ old-val pct-per-time)))
-    (setq full-brackets '())
-    (setq sum 0)
-    (dolist (element brackets)
-      (setq sum (+ sum (if element element 0)))
-      (push sum full-brackets))
-    (setq full-brackets (reverse full-brackets))
-    (message "Percentages for each bracket are: %s\nFull percentages for each bracket are: %s\nEstimated velocities: %s\nLength of each list: %s, %s, %s" brackets full-brackets estimates (length brackets) (length full-brackets) (length estimates))))
-
-;; https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/
-(defun my-org-calc-velocity()
-  "Compare the estimated Effort for the current task to the time clocked, calculate the Velocity (effort / actual), and save that value to `Velocity` property."
-  (let* ((current-headline (or (and (org-at-heading-p)
-                                    (point))
-                               (save-excursion (org-back-to-heading))))
-         (effort-prop (org-entry-get current-headline "Effort"))
-         (effort (org-duration-string-to-minutes
-                  (if effort-prop effort-prop 0)))
-         (actual (org-clock-sum-current-item))
-         (velocity (/ effort actual)))
-    (cond ((= actual 0)
-           (message "No time clocked, skipping velocity calculation."))
-          ((= effort 0)
-           (message "No time estimate, skipping velocity calculation."))
-          (t
-           (org-entry-put current-headline "Velocity"
-                          (number-to-string velocity))))))
-
-(defun my-org-calc-velocity-when-done()
-  "Calculate velocity using `my-org-calc-velocity` for the current task if the state has just changed to DONE or equivalent."
-  (when (catch 'break
-          (dolist (element org-done-keywords)
-            (when (string= (nth 2 (org-heading-components)) element)
-              (throw 'break t))))
-    (my-org-calc-velocity)))
 
 ;; TODO: make this more customizable
 (defun my-org-summary-todo ()
@@ -847,7 +775,6 @@ To modify this variable, you can use the customize interface, or do e.g.:
                                     "PARTIAL(p)"))
       org-stuck-projects '("TODO={.+}/-DONE" nil nil "SCHEDULED:\\|DEADLINE:"))
 (add-hook 'org-after-todo-state-change-hook 'my-org-summary-todo)
-(add-hook 'org-after-todo-state-change-hook 'my-org-calc-velocity-when-done)
 (org-clock-persistence-insinuate)
 (org-super-agenda-mode 1)
 
