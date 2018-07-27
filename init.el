@@ -728,12 +728,19 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (setq erc-kill-server-buffer-on-quit t
       erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477")
-      erc-log-insert-log-on-open nil
-      erc-log-channels t
       erc-server-reconnect-timeout 30
+
+      ;; Logging
+      erc-log-insert-log-on-open nil
+      erc-save-buffer-on-part t
+      erc-save-queries-on-quit t
+      erc-log-write-after-send t
+      erc-log-write-after-insert t
+
       erc-join-buffer 'bury
       erc-server-reconnect-attempts 10)
 (erc-autojoin-mode 1)
+(erc-log-enable)
 
 ;; Magit
 (add-to-list 'magit-log-arguments "--color")
