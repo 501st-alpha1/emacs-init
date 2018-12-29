@@ -465,6 +465,11 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
     (print (car list))
     (setq list (cdr list))))
 
+(defun my-read-date()
+  "Read a date with `org-read-date`, replace dashes (-) with slashes (/), and
+return the resulting string."
+  (subst-char-in-string ?- ?/ (org-read-date)))
+
 (defun my-set-org-todo(symbol value)
   (set-default symbol value)
   (add-to-list 'org-agenda-files value))
