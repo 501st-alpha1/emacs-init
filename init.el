@@ -353,7 +353,9 @@ value, with latter right-aligned to desired column (default 80)."
     (split-window-horizontally)
     ;; TODO: Resize windows?
     (other-window 1)
-    (shell (concat "*" folder "-shell*"))))
+    (shell (concat "*" folder "-shell*"))
+    (magit-status)
+    (bury-buffer)))
 
 (defun my-open-magit-persp(&optional arg)
   "Open a new perspective with dired in one pane and Magit in the other.
