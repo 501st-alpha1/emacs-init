@@ -123,6 +123,7 @@
 (require 'flx-ido)
 (require 'flymake)
 (require 'git-gutter)
+(require 'git-link)
 (require 'gnus)
 (require 'go-mode)
 (require 'hideshow)
