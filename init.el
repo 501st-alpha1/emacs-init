@@ -355,6 +355,18 @@ value, with latter right-aligned to desired column (default 80)."
     (other-window 1)
     (shell (concat "*" folder "-shell*"))))
 
+(defun my-open-magit-persp(&optional arg)
+  "Open a new perspective with dired in one pane and Magit in the other.
+
+If no ARG given, prompt user for folder (with ido)."
+  (interactive)
+  (persp-switch "temp-123456789") ;; FIXME: make this random
+  (if arg
+      (dired arg)
+    (ido-dired))
+  (persp-rename (buffer-name))
+  (magit-status))
+
 (defun my-org-agenda-skip-multi(list)
   "Call multiple functions for org-agenda-skip
 
