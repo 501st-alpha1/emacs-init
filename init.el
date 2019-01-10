@@ -156,6 +156,7 @@
 (require 'pocket-mode)
 (require 'projectile)
 (require 'python)
+(require 'restclient)
 (require 'ruby-electric)
 (require 'seq-24)
 (require 'soundcloud)
