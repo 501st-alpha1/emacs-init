@@ -464,7 +464,9 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
       (let (org-log-done org-log-states)
         (org-todo (if (not (my-org-any-subheading-has-any-state
                             org-not-done-keywords))
-                      "DONE"
+                      (if (my-org-any-subheading-has-any-state '("CANCELLED" "PARTIAL"))
+                          "PARTIAL"
+                        "DONE")
                     (if (not (my-org-any-subheading-has-any-state
                               (remove "CANCELLED" org-done-keywords)))
                         (if (my-org-any-subheading-has-state "STARTED")
