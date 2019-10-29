@@ -341,6 +341,8 @@ value, with latter right-aligned to desired column (default 80)."
       (setq builder (concat builder " ")))
     (concat builder right)))
 
+(setq ledger-post-amount-alignment-column 80)
+
 (defun my-ledger-layout(fullpath &optional name)
   (let* ((parsed-dir (split-string fullpath "/"))
          (file (car (last parsed-dir)))
