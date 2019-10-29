@@ -370,6 +370,8 @@ If no ARG given, prompt user for folder (with ido)."
   (persp-rename (buffer-name))
   (magit-status))
 
+(global-set-key (kbd "C-c m") 'my-open-magit-persp)
+
 (defun my-org-agenda-skip-multi(list)
   "Call multiple functions for org-agenda-skip
 
