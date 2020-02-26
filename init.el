@@ -100,6 +100,7 @@
 (require 'deft)
 (require 'editorconfig)
 (require 'emms-setup)
+(require 'emojify)
 (require 'em-alias)
 (require 'em-banner)
 (require 'em-basic)
