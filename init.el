@@ -199,6 +199,18 @@
       (beginning-of-line)
       (message "Your message has %s words." (count-words beg (point))))))
 
+(defun my-compose-copy()
+  "Copy (kill) the text from the closest :COMPOSE: org-mode drawer."
+  (interactive)
+  (save-excursion
+    (search-backward ":COMPOSE:")
+    (beginning-of-line)
+    (next-line)
+    (let ((beg (point)))
+      (search-forward ":END:")
+      (beginning-of-line)
+      (kill-ring-save beg (point)))))
+
 (defun my-dev-layout(path folder)
   (let ((fullpath (concat path "/" folder)))
     (persp-switch folder)
