@@ -989,6 +989,7 @@ To modify this variable, you can use the customize interface, or do e.g.:
 (add-hook 'emacs-startup-hook
           (lambda ()
             (interactive)
+            (switch-to-buffer "*scratch*") ;; Kill can fail if not in current perspective.
             (kill-buffer "*scratch*")
             (find-file (concat my-external-library-location "/.scratch"))
             (rename-buffer "*scratch*")
