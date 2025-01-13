@@ -382,6 +382,7 @@ If no ARG given, prompt user for folder (with ido)."
   (if arg
       (dired arg)
     (ido-dired))
+  (kill-buffer "*scratch* (temp-123456789)")
   (persp-rename (buffer-name))
   (magit-status))
 
