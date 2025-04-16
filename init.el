@@ -473,6 +473,20 @@ the given list. Pass `org-not-done-keywords` to see if task is open, or pass
         (when value
           (throw 'break t))))))
 
+(defun my-org-count-words-subtree()
+  "Count the number of words in an org subtree.
+
+Result is saved to `SUBTREE_NUM_WORDS` property, as well as printed."
+  (interactive)
+  (save-excursion
+    (org-mark-subtree)
+    (exchange-point-and-mark) ; move to end of region.
+    (let ((numwords (count-words (mark) (point))))
+      (deactivate-mark) ; clear region
+      (exchange-point-and-mark) ; jump back to selected header
+      (org-set-property "SUBTREE_NUM_WORDS" (number-to-string numwords))
+      (message "Words: %d" numwords))))
+
 ;; TODO: make this more customizable
 (defun my-org-summary-todo ()
   "Switch entry to DONE when all subentries are done."
